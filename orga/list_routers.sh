@@ -1,3 +1,4 @@
+#! /bin/sh
 ROUTERS="\
 buffalo-wzr-hp-ag300h-wzr-600dhp \
 buffalo-wzr-hp-g450h \
@@ -79,16 +80,12 @@ x86-kvm.img \
 x86-virtualbox.vdi \
 x86-vmware.vmdk"
 
-for routers in `echo $ROUTERS`  # durchgehe alle Router
+for routers in `echo $ROUTERS` 
 do
   echo "$routers ";
   cd $routers ;
-  touch README.md ;
-  string1="README für Router: "
-  string2=$routers
-  combined=$string1$string2
-  echo $combined >> README.md ;
-  # rm README.md ;
+  # touch test ;
+  # rm test ;
   cd .. ;
 done
 
