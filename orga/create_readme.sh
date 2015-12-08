@@ -1,3 +1,4 @@
+#! /bin/sh
 ROUTERS="\
 buffalo-wzr-hp-ag300h-wzr-600dhp \
 buffalo-wzr-hp-g450h \
