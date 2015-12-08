@@ -1,0 +1,431 @@
+\usepackage[utf8]{inputenc} 															%     Umlaute direkt Eingeben Ä ä Ö ö Ü ü und @ ermöglichen
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\newcommand{\changefont}[3]{
+\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{array}
+
+%\usepackage{AppleKeys}
+
+\usepackage{fullpage}
+\usepackage{ccaption}
+\usepackage{ulem}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{tabularx}
+\usepackage{colortbl}
+
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{PTSansNarrow}
+
+%--------------------------------------------------
+\setlength{\parindent}{0pt}  															% Einrücken der ersten Zeile
+\setlength{\parskip}{0pt}    															% Abstand zwischen den Absätzen
+\usepackage{eso-pic}																	% ----------------- USED TO INCLUDE PDF Background as example
+\usepackage{graphicx}  																	% ----------------- USED TO INCLUDE PDF Background as example
+\newcommand\BackgroundPic{																%====================================================================================
+\put(-3,0){
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering																						% Hintergrund auf Vollbind und includieren
+\includegraphics[width=\paperwidth,height=\paperheight]{./Bilder/bgMitschift.pdf}%
+\vfill
+}}}
+
+\usepackage{array,arydshln}
+\setlength\dashlinedash{0.2pt}
+\setlength\dashlinegap{1.5pt}
+\setlength\arrayrulewidth{0.3pt}
+\definecolor{darkblue}{rgb}{0,0,0.5}
+\usepackage{soul}
+
+																								%==============================================================================
+% =======  SCHRIFTEN ========================
+\oddsidemargin-10mm
+\usepackage{empheq}
+\usepackage[ngerman]{babel} 																	% deutsche Babel
+\usepackage{pxfonts,txfonts,upgreek,} 															% einige mathe symbole plus schöne schrift
+\usepackage{amssymb}
+\usepackage{MnSymbol}
+\usepackage{amsmath}
+\renewcommand*{\familydefault}{\sfdefault}
+
+\usepackage[all]{tcolorbox}
+\tcbuselibrary{breakable}
+\usepackage{xcolor}
+\usepackage{framed}
+
+% --------------          Eingekreiste zeichen ----------
+\newcommand*\kreis[1]{\unitlength1ex\begin{picture}(2.5,2.5)%
+\put(0.75,0.75){\circle{3}}\put(0.7,0.7){\makebox(0,0){#1}}\end{picture}}
+
+%----------------------------------color
+\definecolor{fulda_green}{rgb}{.38,.74,.10}
+\definecolor{fulda_lightgreen}{rgb}{.64,.85,.40}
+\definecolor{fulda_lightgray}{gray}{.4}
+\definecolor{fulda_subtitle}{rgb}{.38,.74,.10}
+\definecolor{fulda_title}{gray}{.0}
+\definecolor{fulda_chapter}{rgb}{.38,.74,.10}
+\definecolor{fulda_section}{rgb}{.38,.74,.10}
+\definecolor{fulda_subsection}{gray}{.4}
+\definecolor{fulda_part}{gray}{1}
+\definecolor{fulda_partnumber}{rgb}{.79,1,.55}
+\definecolor{fulda_partback}{rgb}{.64,.85,.40}
+\definecolor{fulda_highlighttitle}{rgb}{.38,.74,.10}
+\definecolor{fulda_highlightbody}{rgb}{.79,1,.55}
+\definecolor{fulda_highlighttitletext}{gray}{1}
+\definecolor{lightgray}{rgb}{0.93,0.95,1.0}
+\definecolor{darkgreen}{RGB}{82,130,179}
+
+
+\definecolor{FFgelb}{HTML}{FFB400}
+\definecolor{FFmagenta}{HTML}{DC0067}
+\definecolor{FFblau}{HTML}{009EE0}
+
+% FF gelb
+% color: #ffb400 \\
+%  :-)  Freifunk-Magenta  \\
+% color: #dc0067 \\
+%  :-)  Freifunk-Zusatzfarbe, nur punktuell einsetzen  \\
+% color: #009ee0 \\
+
+% ------------------------------------------------
+
+% --------------------------------------------------------------------------------------------------------------        I N F O - B O X _ H S - F U L D A
+%\newcommand{\infobox}[3]{
+%    \vspace{5mm}
+%    \noindent
+%    \colorbox{fulda_highlighttitle}{\bfseries\color{fulda_highlighttitletext}\parbox{\textwidth}{#1}}
+%    \colorbox{fulda_highlightbody}{\parbox{\textwidth}{#2}}
+%    \colorbox{fulda_highlighttitle}{\bfseries\color{fulda_highlighttitletext}\parbox{\textwidth}{#3}}
+%    \vspace{5mm}
+%}
+\usepackage{transparent}
+\newlength{\mylen} %Deklaration
+
+
+
+\newcommand{\infobox}[2]{
+  
+\begingroup
+ \centering
+\tcbset{width=(\linewidth), colframe=white!100!black,colback=monoorange,boxrule=0mm}
+
+        \begin{tcolorbox}[height=1cm,valign=center,%skin=beamerfirst,
+        arc=3px
+       % borderline south={2pt}{-2pt}{black} 
+       % fuzzy shadow={0mm}{-1mm}{0mm}{0.1mm}%
+       %         {black!50!white}
+               ]
+          \color{white}
+          \textbf{#1}
+        \end{tcolorbox}
+\vspace{-7pt}
+\tcbset{width=(\linewidth-1cm), colframe=white!100!black,colback=monoblack}
+        \begin{tcolorbox}[valign=center,skin=beamerlast,breakable]
+
+\leftskip1em
+\color{white}
+\smallskip
+{#2}
+        \end{tcolorbox}
+\endgroup
+}
+
+\newcommand{\infoboxold}[2]{
+    \vspace{5mm}
+    \noindent
+    \vspace{-0.35mm}\hspace{-3px}
+    \colorbox{monoorange}{\bfseries\color{white}\parbox{\textwidth}{#1}}
+   %  \setlength{\mylen}{4px}
+    \vspace{0mm}\hspace{0px} % vorher 0mm
+    \colorbox{monoblack}{\bfseries\color{lightgray}\parbox{\textwidth-6px}{#2}}
+   % \vspace{5mm}\hspace{0px}
+%    \colorbox{black}{\bfseries\color{white}\parbox{\textwidth-6px}{#3}}
+   %\vspace{10mm}
+}
+%
+
+\newcommand{\ipa}[2]
+{
+\color{monoorange}
+\medskip
+\uline{\revreturnkey $\ \ \ ${#1}:}\\ 
+\color{white}
+{#2}\\ 
+}
+
+\newcommand{\ipencil}[2]{\medskip\color{monoorange}
+%\medskip 
+\uline{\pencilkey $\ \ \ ${#1}: } \\ 
+\color{white}
+{#2} \\ 
+}
+
+% 1 Typ
+% 2 Name der Box
+% 3 Quelldatei
+% 4 true false   breakable
+% 5 first line
+% 6 last line
+
+\newcommand{\monocodebox}[6]{
+
+\begin{mintedbox}[breakable=#4,
+%ribbonbox,
+ bottomrule=0.5mm,
+ width=\paperwidth-3cm,
+ boxsep=1mm, 
+ enhanced=true,
+ colframe = monoblack,
+ drop fuzzy shadow,
+ colback = black
+ ]{#2}%
+ 
+
+     \inputminted[firstline=#5,lastline=#6, 
+     linenos=true, framesep=2mm, mathescape, numbersep=5pt,tabsize=4,formatcom=\color{white},%fontsize=\footnotesize, 
+]{#1}{#3}%
+
+\end{mintedbox}%
+\vspace{+0.2cm}
+
+}
+
+\newcommand{\codebox}[6]{
+  \begin{mintedbox}[breakable=#4,
+%ribbonbox,
+ bottomrule=1mm,
+ width=\paperwidth-3cm,
+ boxsep=1mm, 
+ enhanced=true,
+ colframe=black!50!white,
+ drop fuzzy shadow,
+ %colback = white!10
+ ]{#2}%
+ 
+    \inputminted[firstline=#5,lastline=#6, 
+     linenos=true, framesep=2mm, mathescape, numbersep=5pt,tabsize=2,%fontsize=\footnotesize, 
+]{#1}{#3}%
+
+
+\end{mintedbox}%
+}
+
+\newcommand{\infocodebox}[6]{
+  \begin{mintedbox}[breakable=#4,
+%ribbonbox,
+ bottomrule=1mm,
+ width=\textwidth-1cm,
+ boxsep=1mm, 
+ enhanced=false,
+ colframe=black!50!white,
+ %drop fuzzy shadow,
+ %colback = white!10
+ ]{#2}%
+ 
+    \inputminted[firstline=#5,lastline=#6, 
+     linenos=true, framesep=2mm, mathescape, numbersep=5pt,tabsize=2,%fontsize=\footnotesize, 
+]{#1}{#3}%
+
+
+\end{mintedbox}%
+}
+
+% ---------------------------------- definition of color
+\definecolor{lightgray}{rgb}{0.93,0.95,1.0}
+\definecolor{darkgreen}{RGB}{82,130,179}
+\definecolor{monogreen}{RGB}{166,226,46}
+\definecolor{monoblack}{RGB}{39,40,34}
+\definecolor{monoorange}{RGB}{253,151,31}
+\definecolor{monoblue}{RGB}{102,217,239}
+\definecolor{monored}{RGB}{249,38,114}
+
+
+
+
+% ---------------------------------- definition of logo's
+\DeclareRobustCommand{\shiftkey}{\raisebox{-.04em}{\includegraphics[height=.83em]{pictures/shift}}}
+\DeclareRobustCommand{\capslockkey}{\raisebox{-0.02em}{\includegraphics[height=.88em]{pictures/capslock}}}
+\DeclareRobustCommand{\ejectkey}{\raisebox{0.01em}{\includegraphics[height=.7em]{pictures/eject}}}
+\DeclareRobustCommand{\pencilkey}{\raisebox{-0.01em}{\includegraphics[height=.8em]{pictures/pencil}}}
+\DeclareRobustCommand{\returnkey}{\raisebox{-.50em}{\includegraphics[height=1.65em]{pictures/return}}}
+\DeclareRobustCommand{\revreturnkey}{\raisebox{-.50em}{\includegraphics[height=1.65em]{pictures/revreturn}}}
+\DeclareRobustCommand{\cubie}{\raisebox{-0.04em}{\includegraphics[height=.83em]{pictures/cubie}}}
+\DeclareRobustCommand{\cubiebig}{\raisebox{-0.04em}{\includegraphics[height=2.83em]{pictures/cubie}}}
+\DeclareRobustCommand{\archlinux}{\raisebox{-0.04em}{\includegraphics[height=2.83em]{pictures/archlinux}}}
+\DeclareRobustCommand{\applekey}{\raisebox{-0.2em}{\includegraphics[height=1.65em]{pictures/apple}}}
+\DeclareRobustCommand{\openapplekey}{\raisebox{-0.2em}%
+              {\includegraphics[height=1.65em]{pictures/apple_outline}}}
+% ------------------
+
+\usepackage{xcolor}
+\usepackage{framed}
+
+\newenvironment{leftbarblue1}[1][\hsize]
+{%
+    \def\FrameCommand
+    {%
+        {\color{blue!75!black}\vrule width 3pt}%
+        \hspace{50pt}%must no space.
+        %\fboxsep=\FrameSep\colorbox{yellow}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}
+{\endMakeFramed}
+
+\newenvironment{leftbarred1}[1][\hsize]
+{%
+    \def\FrameCommand
+    {%
+        {\color{red!75!black}\vrule width 3pt}%
+        \hspace{50pt}%must no space.
+        %\fboxsep=\FrameSep\colorbox{yellow}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}
+{\endMakeFramed}
+
+\newenvironment{leftbarorange1}[1][\hsize]
+{%
+    \def\FrameCommand
+    {%
+        {\color{orange!75!white}\vrule width 3pt}%
+        \hspace{50pt}%must no space.
+        %\fboxsep=\FrameSep\colorbox{yellow}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}
+{\endMakeFramed}
+
+\newenvironment{leftbargreen1}[1][\hsize]
+{%
+    \def\FrameCommand
+    {%
+        {\color{green!75!black}\vrule width 3pt}%
+        \hspace{50pt}%must no space.
+        %\fboxsep=\FrameSep\colorbox{yellow}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}
+{\endMakeFramed}
+
+% ==============   Code Boxen
+
+\usepackage{minted}
+
+%\usemintedstyle{autumn} 
+
+% weitere Styles 
+\usemintedstyle{monokai} 
+%\usemintedstyle{manni} 
+%\usemintedstyle{rrt} 
+%\usemintedstyle{perldoc} 
+%\usemintedstyle{borland} 
+%\usemintedstyle{colorful} 
+%\usemintedstyle{default} 
+%\usemintedstyle{murphy} 
+%\usemintedstyle{vs} 
+%\usemintedstyle{trac} 
+%\usemintedstyle{tango} 
+%\usemintedstyle{fruity} 
+%\usemintedstyle{bw} 
+%\usemintedstyle{emacs} 
+%\usemintedstyle{vim} 
+%\usemintedstyle{pastie} 
+%\usemintedstyle{friendly} 
+%\usemintedstyle{native} 
+
+
+\newminted[mycsharp]{csharp}{tabsize=2,fontsize=\footnotesize}
+\newminted[myjson]{js}{tabsize=2,fontsize=\footnotesize}
+\newminted[myxml]{xml}{tabsize=2,fontsize=\footnotesize}
+\newminted[myshell]{shell-session}{linenos,gobble=2, numbersep=5pt,framesep=2mm,tabsize=2,fontsize=\footnotesize}
+\newminted[mycode]{text}{tabsize=2,fontsize=\footnotesize}
+\newminted[myjava]{java}{linenos, framesep=2mm, numbersep=5pt,tabsize=2,fontsize=\footnotesize}
+\newminted[myc]{c}{linenos,framesep=2mm, numbersep=5pt,tabsize=2,fontsize=\footnotesize}
+\newminted[myraw]{raw}{linenos,framesep=2mm, numbersep=5pt,tabsize=2,fontsize=\footnotesize}
+\newminted[mytext]{text}{linenos,framesep=2mm, numbersep=5pt,tabsize=2,fontsize=\footnotesize}
+\newminted[myphp]{php}{linenos,framesep=2mm, numbersep=5pt,tabsize=2,fontsize=\footnotesize}
+
+
+\newtcolorbox[auto counter,number within=section, list inside=mypyg]{mintedbox}[2][]{%
+  title={Listing  \thetcbcounter: #2}, % text titelzeile
+  list entry={\numberline{\thetcbcounter}#2},
+  bottomrule=1mm,boxsep=1mm, %enhanced,
+  colframe=black!50!white,%drop fuzzy shadow,
+  #1}
+
+\newenvironment{listingsbox}[3][]
+ {%
+   \def\listingsboxenvironment{#2}%save the environments
+   \VerbatimEnvironment%
+   \begin{mintedbox}[#1]{#3}%
+     \begin{\listingsboxenvironment}}%
+ {%
+  \end{\listingsboxenvironment}%
+  \end{mintedbox}%
+}
+
+% ================================================================================
+
+
+
+
+% ==============   Code Boxes via minted
+
+%\usepackage{minted}
+
+%\usemintedstyle{autumn} 
+
+% weitere Styles 
+%\usemintedstyle{monokai}   % is modified
+%\usemintedstyle{manni} 
+%\usemintedstyle{rrt} 
+%\usemintedstyle{perldoc} 
+%\usemintedstyle{borland} 
+%\usemintedstyle{colorful} 
+%\usemintedstyle{default} 
+%\usemintedstyle{murphy} 
+%\usemintedstyle{vs} 
+%\usemintedstyle{trac} 
+%\usemintedstyle{tango} 
+%\usemintedstyle{fruity} 
+%\usemintedstyle{bw} 
+%\usemintedstyle{emacs} 
+%\usemintedstyle{vim} 
+%\usemintedstyle{pastie} 
+%\usemintedstyle{friendly} 
+%\usemintedstyle{native} 
+
+
+\renewcommand{\theFancyVerbLine}{\sffamily\textcolor{monoorange}{\scriptsize \oldstylenums{\arabic{FancyVerbLine}}}}
+
+%\newtcolorbox[auto counter,number within=section, list inside=mypyg]{mintedbox}[2][]{%
+ % title={%Quellcode  \thetcbcounter: 
+  %#2}, % text titelzeile
+%  list entry={\numberline{\thetcbcounter}#2},
+ % coltext=white, bottomrule=1mm,boxsep=1mm, enhanced,colframe=monoorange,%black!50!white,%drop fuzzy shadow,
+  %#1}
+
+\usepackage{multirow}
+\usepackage{array,arydshln}
+\setlength\dashlinedash{0.2pt}
+\setlength\dashlinegap{1.5pt}
+\setlength\arrayrulewidth{0.3pt}
+\definecolor{darkblue}{rgb}{0,0,0.5}
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{hyphenat}  % mbox like mit umbrüchen \nohyphens{} is command
+
+%\AddToShipoutPicture{\BackgroundPic}													% Hintergrund auf alle Seiten Anwenden
+
+
+
+\newcommand{\FFCommunity}{fulda.freifunk.net}
