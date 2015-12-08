@@ -84,7 +84,9 @@ for routers in `echo $ROUTERS`
 do
   echo "$routers ";
   cd $routers ;
+  rm specs.tex;
   touch specs.tex ; 
+    echo "% specs from given folder" >> specs.tex ;
   	echo "\small" >> specs.tex ;
 	echo "\\\color{black}" >> specs.tex ;
 	echo "\\\vspace{0.3cm}" >> specs.tex ;
@@ -103,21 +105,21 @@ do
 	echo "] {" >> specs.tex ;
 	string1="                		& $\ \ $ "
 	string2=$routers
-	string3="                    \\"
+	string3="                 \\\\\   "
 	combined=$string1$string2$string3
 	echo $combined >> specs.tex ;
-	echo "$\ \ $ CPU   			& $\ \ $ NAME \\" >> specs.tex ;
-	echo "$\ \ $ RAM 				& $\ \ $ XXX MB \\" >> specs.tex ;
-	echo "$\ \ $ Flash			& $\ \ $ XXX MB \\" >> specs.tex ;
-	echo "$\ \ $ WAN				& $\ \ $ X x1 GigE WAN	 \\" >> specs.tex ;
-	echo "$\ \ $ LAN				& $\ \ $ X x1 GigE LAN	 \\" >> specs.tex ;
-	echo "$\ \ $ USB				& $\ \ $ xX v2.0	 \\" >> specs.tex ;
-	echo "$\ \ $ WIFI 			& $\ \ $ 300 Mbit (2x2) im 2.4 Ghz Band \\" >> specs.tex ;
-	echo "						& $\ \ $ 450 Mbit (3x3) im 5 Ghz Band\\" >> specs.tex ;
+	echo "$\ \ $ CPU   			& $\ \ $ NAME \\\\\ " >> specs.tex ;
+	echo "$\ \ $ RAM 				& $\ \ $ XXX MB \\\\\ " >> specs.tex ;
+	echo "$\ \ $ Flash			& $\ \ $ XXX MB \\\\\ " >> specs.tex ;
+	echo "$\ \ $ WAN				& $\ \ $ X x1 GigE WAN	 \\\\\ " >> specs.tex ;
+	echo "$\ \ $ LAN				& $\ \ $ X x1 GigE LAN	 \\\\\ " >> specs.tex ;
+	echo "$\ \ $ USB				& $\ \ $ xX v2.0	 \\\\\ " >> specs.tex ;
+	echo "$\ \ $ WIFI 			& $\ \ $ 300 Mbit (2x2) im 2.4 Ghz Band \\\\\ " >> specs.tex ;
+	echo "						& $\ \ $ 450 Mbit (3x3) im 5 Ghz Band \\\\\ " >> specs.tex ;
 	echo "};" >> specs.tex ;
 	echo "\end{tikzpicture}" >> specs.tex ;
 	echo "\end{center} " >> specs.tex ;
-	# rm specs.tex;
+	
   # rm test ;
   cd .. ;
 done
