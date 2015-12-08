@@ -1,14 +1,14 @@
 
-mdir buffalo-wzr-hp-ag300h-wzr-600dhp
-mdir buffalo-wzr-hp-g450h
-mdir d-link-dir-615-rev-c1
-mdir d-link-dir-825-rev-b1
-mdir gl-inet-6408a-v1
-mdir gl-inet-6416a-v1
-mdir linksys-wrt160nl
-mdir netgear-wndr3700
-mdir netgear-wndr3700v2
-mdir netgear-wndr3700v4
+mkdir buffalo-wzr-hp-ag300h-wzr-600dhp
+mkdir buffalo-wzr-hp-g450h
+mkdir d-link-dir-615-rev-c1
+mkdir d-link-dir-825-rev-b1
+mkdir gl-inet-6408a-v1
+mkdir gl-inet-6416a-v1
+mkdir linksys-wrt160nl
+mkdir netgear-wndr3700
+mkdir netgear-wndr3700v2
+mkdir netgear-wndr3700v4
 mkdir netgear-wndr3800
 mkdir netgear-wndr4300
 mkdir netgear-wndrmacv2
