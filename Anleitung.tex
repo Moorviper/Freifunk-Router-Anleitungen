@@ -3,6 +3,7 @@
 
 \usepackage{freifunk}
 \usepackage{router}
+\usepackage{bookmark}
 
 \usetikzlibrary{patterns} % preamble
 \tcbuselibrary{skins} % preamble
@@ -59,8 +60,10 @@
 % ====================================================================
 \changefont{pag}{m}{n}
 
-\begin{document}
 \pgfplotsset{compat=1.12}
+
+\begin{document}
+
 % ====================================================================
 %
 %         Linke Seite Streifen
@@ -144,7 +147,6 @@
 \end{tikzpicture} 
 
 
-
 % ====================================================================
 %
 %         Inhalt (Mitte)
@@ -222,7 +224,7 @@
 \Huge{\FFCommunity} \\
 
 \small{Technische Daten: \routername} \\
-\small{}
 \input{specs.tex}
+
 
 \end{document}
