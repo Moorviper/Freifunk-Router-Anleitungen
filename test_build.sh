@@ -83,14 +83,24 @@ x86-vmware.vmdk"
 rm -R pdfbuild;
 mkdir pdfbuild;
 
+soll=0
+ist=0
 for routers in `echo $ROUTERS` 
 do
-rm *.log;
-rm -R _minted* ;
-rm *.out;
-rm *.aux;
-rm *.synctex.gz;
-  echo "$routers ";
+  soll=`expr $soll + 1`
+done
+# echo $soll
+
+for routers in `echo $ROUTERS` 
+do
+rm *.log 1>/dev/null 2>&1 ;
+rm -R _minted* 1>/dev/null 2>&1 ;
+rm *.out 1>/dev/null 2>&1 ;
+rm *.aux 1>/dev/null 2>&1 ;
+rm *.synctex.gz 1>/dev/null 2>&1 ;
+	clear;
+	echo "";
+  echo " $routers ";
   texsuffix=".tex"
   pdfsuffix=".pdf"
   stysuffix=".sty"
@@ -101,7 +111,7 @@ rm *.synctex.gz;
   specsPath1="$routers"
   specsPath2="/specs.tex"
   specsPath=$specsPath1$specsPath2
-  echo $specsPath;
+  # echo $specsPath;
   touch $texfile;
   rm $routerfile;
   touch $routerfile;
@@ -120,17 +130,33 @@ rm *.synctex.gz;
  
 
   # build
-  pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile  ;
+  # pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile  ;
+  # pdflatex  -latexoption="--shell-escape -interaction=nonstopmode  -synctex=1" $texfile  ;
 
+  echo "";
+  echo " PDFLaTeX"
+   ist=`expr $ist + 1`
+  # echo $ist;
+  proz=$(bc -l <<< 'scale=2; '$soll'/'$ist'')
+  # let progress=100/$proz
+  echo " zu "$(bc -l <<< 'scale=2; 100/'$proz'') "% fertig";
+  echo "=============================================";
+  echo " building $routers first run ...";
+  /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
+  echo " building $routers second run ...";
+  /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
+  echo "=============================================";
   mv $pdffile ./pdfbuild ;
   # cleanup
-  rm $texfile;
+  rm $texfile ;
   # rm $routerfile;
   # mkdir $routers ;
+  echo "";
+  echo "";
+  echo "";
 done
-
-rm *.log;
-rm -R _minted* ;
-rm *.out;
-rm *.aux;
-rm *.synctex.gz;
+rm *.log 1>/dev/null 2>&1 ;
+rm -R _minted* 1>/dev/null 2>&1 ;
+rm *.out 1>/dev/null 2>&1 ;
+rm *.aux 1>/dev/null 2>&1 ;
+rm *.synctex.gz 1>/dev/null 2>&1 ;
