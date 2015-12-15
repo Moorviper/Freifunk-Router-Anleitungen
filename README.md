@@ -4,4 +4,8 @@ Latex Build Enviroment for several Gluon based Firmwares
 === Known Issues ===
 
 Incomplete ;-)
-Titlepage is broken / with sublimetext/simpleBuilder it works ...
+
+Todo
+complete spec's
+complete vector pictures for all router
+...
