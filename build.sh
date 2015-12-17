@@ -1,5 +1,5 @@
 #! /bin/sh
-ROUTERS1="\
+ROUTERS="\
 buffalo-wzr-hp-ag300h-wzr-600dhp \
 buffalo-wzr-hp-g450h \
 d-link-dir-615-rev-c1 \
@@ -80,12 +80,11 @@ x86-kvm.img \
 x86-virtualbox.vdi \
 x86-vmware.vmdk"
 
-ROUTERS="\
-tp-link-tl-wr841n-nd-v3 \
-tp-link-tl-wr841n-nd-v5 \
-tp-link-tl-wr841n-nd-v7 \
-tp-link-tl-wr841n-nd-v8 \
-tp-link-tl-wr841n-nd-v9 \
+ROUTERSas="\
+tp-link-tl-wdr3500-v1 \
+tp-link-tl-wdr3600-v1 \
+tp-link-tl-wdr4300-v1 \
+tp-link-tl-wdr4900-v1 \
 x86-generic.img \
 x86-kvm.img \
 x86-virtualbox.vdi \
@@ -121,8 +120,8 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
   routerfile=$router$stysuffix
   specsPath1="$routers"
   specsPath2="/specs.tex"
-  frontpath1="/front.jpg"
-  frontpath2="/back.jpg"
+  frontpath1="/front.pdf"
+  frontpath2="/back.pdf"
   specsPath=$specsPath1$specsPath2
   frontpath=$specsPath1$frontpath1
   backpath=$specsPath1$frontpath2
@@ -140,11 +139,11 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
 
   cat Anleitung.tex >> $texfile;
   rm specs.tex ;
-  rm front.jpg ;
-  rm back.jpg ;
+  rm front.pdf ;
+  rm back.pdf ;
   cp $specsPath specs.tex ;
-  cp $frontpath front.jpg ;
-  cp $backpath back.jpg ;
+  cp $frontpath front.pdf ;
+  cp $backpath back.pdf ;
 
   # build
   # pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile  ;
