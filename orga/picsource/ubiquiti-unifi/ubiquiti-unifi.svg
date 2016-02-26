@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1280 1150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g id="UAP + LR">
+        <g transform="matrix(0.980586,0,0,0.987992,19.2359,16.8384)">
+            <ellipse cx="640.601" cy="562.801" rx="517.209" ry="501.136" style="fill:url(#_Radial1);stroke-width:1.02px;stroke:rgb(115,115,115);"/>
+        </g>
+        <g transform="matrix(1.02749,-9.41062e-18,-9.528e-18,1.07921,-18.8948,-43.1421)">
+            <path d="M648.286,384.86C755.345,384.86 842.263,467.609 842.263,569.532C842.263,671.456 755.345,754.205 648.286,754.205C541.228,754.205 454.31,671.456 454.31,569.532C454.31,467.609 541.228,384.86 648.286,384.86ZM648.286,402.777C744.958,402.777 823.443,477.498 823.443,569.532C823.443,661.567 744.958,736.288 648.286,736.288C551.614,736.288 473.129,661.567 473.129,569.532C473.129,477.498 551.614,402.777 648.286,402.777Z" style="fill:url(#_Radial2);"/>
+        </g>
+        <g transform="matrix(1.17017,0,0,1.01362,-99.9483,-8.35152)">
+            <ellipse cx="638.6" cy="572.111" rx="153.639" ry="177.703" style="fill:none;stroke-width:0.91px;stroke:rgb(102,102,102);"/>
+        </g>
+    </g>
+    <defs>
+        <radialGradient id="_Radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(523.281,2.62725,-2.5842,507.02,642.896,563.677)"><stop offset="0%" style="stop-color:white;stop-opacity:1"/><stop offset="46%" style="stop-color:rgb(250,250,250);stop-opacity:1"/><stop offset="64%" style="stop-color:rgb(239,239,239);stop-opacity:1"/><stop offset="81%" style="stop-color:rgb(228,228,228);stop-opacity:1"/><stop offset="81%" style="stop-color:rgb(228,228,228);stop-opacity:1"/></radialGradient>
+        <radialGradient id="_Radial2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(194.448,-4.10505e-06,4.00625e-06,185.122,648.286,569.533)"><stop offset="0%" style="stop-color:rgb(113,187,120);stop-opacity:1"/><stop offset="89%" style="stop-color:rgb(113,187,120);stop-opacity:1"/><stop offset="95%" style="stop-color:rgb(144,202,150);stop-opacity:1"/><stop offset="100%" style="stop-color:white;stop-opacity:1"/></radialGradient>
+    </defs>
+</svg>
