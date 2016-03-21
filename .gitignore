@@ -1,3 +1,6 @@
 .DS_Store
 _minted*
 *.pyg
+specs.tex
+router.sty
+front.pdf
