@@ -92,6 +92,7 @@ x86-vmware.vmdk"
 
 rm -R pdfbuild;
 mkdir pdfbuild;
+cp gitignorePdfFolder pdfbuild/.gitignore;
 
 soll=0
 ist=0
