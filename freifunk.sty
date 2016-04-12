@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{array}
+\usepackage{multicol}
 
 %\usepackage{AppleKeys}
 
@@ -353,7 +354,8 @@
 
 
 \newtcolorbox[auto counter,number within=section, list inside=mypyg]{mintedbox}[2][]{%
-  title={Listing  \thetcbcounter: #2}, % text titelzeile
+  title={%Listing  \thetcbcounter: 
+  #2}, % text titelzeile
   list entry={\numberline{\thetcbcounter}#2},
   bottomrule=1mm,boxsep=1mm, %enhanced,
   colframe=black!50!white,%drop fuzzy shadow,
