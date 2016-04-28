@@ -1,0 +1,162 @@
+\newcommand{\printVendor}
+{
+  \ifthenelse{\equal{\vendor}{netgear}}{Netgear}{}%
+  \ifthenelse{\equal{\vendor}{tplink}}{TP-Link}{}%
+  \ifthenelse{\equal{\vendor}{ubiquiti}}{Ubiquiti Networks}{}%  
+  \ifthenelse{\equal{\vendor}{linksys}}{Linksys}{}%
+  \ifthenelse{\equal{\vendor}{glnet}}{GL-Net}{}%
+  \ifthenelse{\equal{\vendor}{dlink}}{D-Link}{}%
+  \ifthenelse{\equal{\vendor}{buffalo}}{Buffalo}{}%
+  \ifthenelse{\equal{\vendor}{xiaomi}}{Xiaomi}{}%
+}%
+
+\newcommand{\adressleiste}[2]{
+  \begin{tcolorbox}[colback=#2!5!white,colframe=#2]{#1}%
+  \end{tcolorbox}
+}
+
+\newcommand{\crededials}[2]{
+\vspace{-0.5cm}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+Benutzername: &   #1  \\
+Passwort:     &   #2  \\
+\end{tabular}
+\end{table}
+}%
+
+
+\newcommand{\stockip}{
+  \ifthenelse{\equal{\vendor}{tplink}}{\ifthenelse{\equal{\type}{router}}{192.168.0.1}{192.168.0.254}}{}
+  \ifthenelse{\equal{\vendor}{glnet}}{\ifthenelse{\equal{\type}{router}}{192.168.0.1}{192.168.0.254}}{}
+}
+  % {\ifthenelse{\equal{\vendor}{netgear}}
+    % {
+  %   % \vendor 
+    
+  %   }{} \\
+  % }
+
+  % {\ifthenelse{\equal{\vendor}{ubiquiti}}
+    % {
+  %   % \vendor 
+  %   192.168.1.20
+  %   }{} \\
+  % }
+
+
+
+  % {\ifthenelse{\equal{\vendor}{linksys}}
+  %   {
+  %     % \vendor {}
+      
+  %   }{} \\
+  % }
+
+  {\ifthenelse{\equal{\vendor}{glnet}}
+    {
+      % \vendor {}
+      
+    }{} \\
+  }
+
+  % {\ifthenelse{\equal{\vendor}{dlink}}
+  %   {
+  %     % \vendor {}
+      
+  %   }{} \\
+  % }
+
+  % {\ifthenelse{\equal{\vendor}{buffalo}}
+  %   {
+  %     % \vendor {}
+      
+  %   }{} \\
+  % }
+
+  % {\ifthenelse{\equal{\vendor}{xiaomi}}
+  %   {
+  %     % \vendor {}\newcommand{\}{router}
+  %     {\ifthenelse{\equal{\type}{router}}
+  %           {
+  %             192.168.0.1
+  %           }{
+  %             192.168.0.254
+  %           } 
+  %     }
+  %   }{} 
+  % }
+
+% }%
+
+%
+%         Makro zum ausgeben des Hersteller Namens  
+%
+
+
+
+%
+%         Makro zum ausgeben des Hersteller Benutzernamens und Passwor  
+%
+\newcommand{\printStockLogin}{
+
+  {\ifthenelse{\equal{\vendor}{netgear}}
+    {
+    % \vendor 
+      Netgear
+    }{} \\
+  }
+
+  {\ifthenelse{\equal{\vendor}{ubiquiti}}
+    {
+    % \vendor 
+    (falls gesetzt) \\
+    \crededials{admin}{admin}
+    }{} \\
+  }
+
+
+  {\ifthenelse{\equal{\vendor}{tplink}}
+    {
+      % \vendor {}\newcommand{\}{router}
+      \crededials{admin}{admin}
+    }{} 
+  }
+
+  {\ifthenelse{\equal{\vendor}{linksys}}
+    {
+      % \vendor {}
+      Linksys
+    }{} \\
+  }
+
+  {\ifthenelse{\equal{\vendor}{glnet}}
+    {
+      % \vendor {}
+      \crededials{xxx}{xxx}
+    }{} \\
+  }
+
+  {\ifthenelse{\equal{\vendor}{dlink}}
+    {
+      % \vendor {}
+      D-Link
+    }{} \\
+  }
+
+  {\ifthenelse{\equal{\vendor}{buffalo}}
+    {
+      % \vendor {}
+      Buffalo
+    }{} \\
+  }
+
+  {\ifthenelse{\equal{\vendor}{xiaomi}}
+    {
+      % \vendor {}\newcommand{\}{router}
+      \crededials{xiamo}{passwort}
+    }{} 
+  }
+
+}%

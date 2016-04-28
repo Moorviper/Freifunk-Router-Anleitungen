@@ -1,9 +1,16 @@
 
 \documentclass[11pt, a4paper,ngerman]{article}
 
+\usepackage{switch}
+
 \usepackage{freifunk}
-\usepackage{router}
+\usepackage{routerhandler}
+
+% \usepackage{router}
 \usepackage{bookmark}
+\usepackage{ifthen}
+\usepackage{makebox}
+\usepackage{caption}
 
 \usetikzlibrary{patterns} % preamble
 \tcbuselibrary{skins} % preamble
@@ -34,236 +41,69 @@
 
 \begin{document}
 
-
-% ====================================================================
-%
-%         Linke Seite Streifen
-%
-% ====================================================================
-
-    \begin{tikzpicture}[overlay,remember picture]
-    \node [
-      fill=FFblau,% Farbe des Randstreifens
-      text=white,% Textfarbe
-      font=\normalfont\bfseries,% Einstellungen für die Schrift
-      inner xsep=1em, % Abstand des Textes von unten
-      % maximale Textbreite = Papierhöhe - 2*Abstand des Textes von unten:
-      text width={\dimexpr\paperheight-2em\relax},
-      minimum height=15mm,% Breite des Randstreifens
-      anchor=north east,
-      rotate=90
-      ]
-      at (current page.north west)
-      {\FFCommunity};           % aus freifunk.sty
-  \end{tikzpicture}%
-
-% ====================================================================
-%
-%         Rechte Seite Streifen
-%
-% ====================================================================
-
-\begin{tikzpicture}[overlay,remember picture]
-    \node [
-      fill=FFgelb,% Farbe des Randstreifens
-      text=white,% Textfarbe
-      font=\normalfont\bfseries,% Einstellungen für die Schrift
-      inner xsep=1em, % Abstand des Textes von unten
-      % maximale Textbreite = Papierhöhe - 2*Abstand des Textes von unten:
-      text width={\dimexpr\paperheight-1em\relax},
-      minimum height=25mm,% Breite des Randstreifens
-      anchor=north,
-      rotate=270
-      ]
-      at (current page.east){\rotatebox{180}{}};
-
-
-      % \node[anchor=east, rotate=90] at (current page.east) {};
-\end{tikzpicture}
-
-\begin{tikzpicture}[overlay,remember picture]
-    \node [
-      fill=white,% Farbe des Randstreifens
-      text=white,% Textfarbe
-      font=\normalfont\bfseries,% Einstellungen für die Schrift
-      inner xsep=1em, % Abstand des Textes von unten
-      % maximale Textbreite = Papierhöhe - 2*Abstand des Textes von unten:
-      text width={\dimexpr\paperheight-1em\relax},
-      minimum height=20mm,% Breite des Randstreifens
-      anchor=north,
-      rotate=270
-      ]
-      at (current page.east){\rotatebox{180}{}};
-
-
-      % \node[anchor=east, rotate=90] at (current page.east) {};
-\end{tikzpicture}
-
-\begin{tikzpicture}[overlay,remember picture]
-    \node [
-      fill=FFmagenta,% Farbe des Randstreifens
-      text=white,% Textfarbe
-      font=\normalfont\bfseries,% Einstellungen für die Schrift
-      inner xsep=1em, % Abstand des Textes von unten
-      % maximale Textbreite = Papierhöhe - 2*Abstand des Textes von unten:
-      text width={\dimexpr\paperheight-1em\relax},
-      minimum height=15mm,% Breite des Randstreifens
-      anchor=north,
-      rotate=270
-      ]
-      at (current page.east){\rotatebox{180}{Einrichten eines: \routername }};
-
-
-      % \node[anchor=east, rotate=90] at (current page.east) {};
-\end{tikzpicture} 
-
-
-\begin{center}
-
-
-\includegraphics[scale=1.7]{./site/\FFCommunity/logo.jpg}\\
-% Schriftzug Mitte
-
-% \huge{\FFCommunity}\\
-
-\vspace{0.3cm}
-
-\includegraphics[scale=0.25]{./front.pdf}\\
-
-\routername
-
-\end{center}
-\newpage
-% \Huge{\FFCommunity} \\
-
-\begin{center}
-\includegraphics[scale=0.30]{./back.pdf}\\
-\Huge{Technische Daten}\\
-\end{center}
-
-
+\input{intro.tex}
 \input{specs.tex}
-
-
-
-
-Um einen WLAN-Router als Freifunk Router zu nutzen ist es erforderlich, das Freifunk Betriebssystem – die Freifunk Firmware – zu installieren. Die Installation ist sehr einfach und du benötigst keine technischen Kenntnisse. Wenn du dieser Anleitung folgst kann eigentlich nichts schiefgehen.\\
-
-{\Large 1. Firmware herunterladen} \\
-
-Wir unterstützen eine ganze Reihe verschiedener WLAN-Router von verschiedenen Herstellern. 
-
-Herauszufinden welche Firmware du brauchst ist ganz einfach: \\
-Der Router-Typ (1) und die Hardware-Version (2) stehen auf der Rückseite des Routers. \\
-Diese Informationen sind jeweils im Dateinamen der Firmware enthalten.
-
-
-{\Large 2. Freifunk-Router mit dem Computer verbinden} \\
-
-Um die heruntergeladene Firmware installieren zu können, musst du deinen WLAN-Router mit deinem PC verbinden. \\
-Schließe dazu als erstes den WLAN-Router (1) \\
-mit dem beiliegenden Netzkabel (3) \\
-an eine Steckdose an. \\
-
-Die Antennen falls nicht Fest verbaut (2) kannst du jetzt oder auch später aufschrauben.
-
-
-%  sdhgbadskfhjasdk    Bild router
-
-
-Dein WLAN-Router und dessen Zubehör.
-Verbinde den WLAN-Router anschließend mit Hilfe des beiliegenden grauen LAN-Kabels (4) mit Deinem Computer. \\
-Stecke dafür das Kabel in eine der gelben Buchsen (die blaue brauchst du später). \\
-
-
-
-
-%  sdhgbadskfhjasdk    Bild router
-
-
-Verbinde den WLAN-Router über eine der gelben Buchsen mit deinem Computer. \\
-Nach dem Einschalten braucht der WLAN-Router ungefähr 30 - 60 Sekunden, bevor er bereit ist. \\
-
-
-
-{\Large 3. Firmware einspielen} \\
-
-Jetzt kannst du den Router einfach über den Webbrowser (z.B. Firefox) konfigurieren. Dazu rufst du in die folgende Adresse auf: http://192.168.0.1
-
-bei TP-Link TL-WA860RE WLAN-Repeater  http://192.168.0.254. Der Menüpunkt "System Tools" erscheint nachdem man die Grundkonfiguration durchgeführt hat.
-
-Du wirst anschließend zur Eingabe eines Benutzernamen und eines Passwortes gefragt. Bei den Geräten von TP-Link kannst du hier einfach admin als Benutzername und auch als Passwort eingeben. (Wie man bei Ubiquiti Geräten in die Einstellungen kommt ist unterschiedlich und steht im Handbuch des jeweiligen Gerätes.)
-
-
-
-%  sdhgbadskfhjasdk    Bild router
-
-
-Anmelden am WLAN-Router (Benutzername und Passwort sind bei TP-Link Geräten jeweils admin)
-Nach der erfolgreichen Anmeldung müsste dein Browserfenster wie in folgender Abbildung aussehen. Klicke nun im Menü bitte auf den Eintrag “System Tools”.
-
-
-
-%  sdhgbadskfhjasdk    Bild router
-
-
-
-
-Als nächste wählst du aus dem Menü “Firmware Upgrade” (1). Danach kannst du die vorhin (in Schritt 2) heruntergeladene Datei auswählen (2). Nach einem Klick auf “Upgrade” (3) beginnt der Prozess.
-
-
-
-%  sdhgbadskfhjasdk    Bild router
-
-
-Du musst noch einmal kurz bestätigen …
-
-
-
-%  sdhgbadskfhjasdk    Bild router
-
-
-… und die Installation läuft.
-Wichtig: Während die Installation läuft, zieh bitte auf keinen Fall den Stecker oder das Netzwerk-Kabel aus dem Router ab. Die Installation sollte in ungefähr einer Minute abgeschlossen sein.
-
-
-
-%  sdhgbadskfhjasdk    Bild router
-
-
-
-
-{\Large 4. Abschluss} \\
-
-Nachdem die Firmware fertig installiert ist, startet der WLAN-Router neu. Dies ist u.a. am Blinken der Lämpchen des WLAN-Router zu erkennen. Zuerst blinken alle Lämpchen kurz auf, danach gehen sie aus. Wenn danach das Lämpchen mit dem Zahnrad gemütlich vor sich hin blinkt, ist der WLAN-Router im Konfigurationsmodus angekommen.
-
-Der WLAN-Router ist jetzt nicht mehr unter der angegeben Adresse erreichbar und eine Fehlermeldung erscheint. Das ist gut so. Denn nun läuft nicht mehr die TP-Link Firmware sondern die Freifunk Firmware auf deinem Router.
-
-
-
-%  sdhgbadskfhjasdk    Bild router
-
-
-Als nächstes musst du deinen Router noch einrichten und im Freifunk Netz anmelden. Auch das ist ganz einfach. Eine detaillierte Beschreibung findest du in der Anleitung "Freifunk-Fulda Knoten konfigurieren".
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\input{./latex/router/install.tex}
+\newpage
+\input{./latex/konsole.tex}
 \end{document}
+
+% \def\netgear{netgear}
+% \newpage
+% \vendor
+% {\huge test} \\
+% \newcommand{\routername}{netgear-wndr3700v2} ""
+
+% \ifthenelse{\equal{\vendor}{netgear}}{\input{./latex/router/install.tex}}{}
+% \ifthenelse{\equal{\vendor}{tplink}}{\input{./latex/router/install.tex}}{}
+% \ifthenelse{\equal{\vendor}{glnet}}{\input{./latex/router/install.tex}}{}
+
+% {\ifthenelse{\equal{\vendor}{ubiquiti}}
+%   % \vendor 
+%   \input{./latex/router/\vendor/install.tex}
+%   }{} \\
+% }
+
+
+% {\ifthenelse{\equal{\vendor}{linksys}}
+%   {
+%     % \vendor {}
+%     \input{./latex/router/\vendor/install.tex}
+%   }{} \\
+% }
+
+% {\ifthenelse{\equal{\vendor}{glnet}}
+%   {\input{./latex/router/\vendor/install.tex}}%
+%   {}%
+% }%
+
+% {\ifthenelse{\equal{\vendor}{dlink}}
+%   {
+%     % \vendor {}
+%     \input{./latex/router/\vendor/install.tex}
+%   }{} \\
+% }
+
+% {\ifthenelse{\equal{\vendor}{buffalo}}
+%   {
+%     % \vendor {}
+%     \input{./latex/router/\vendor/install.tex}
+%   }{} \\
+% }
+
+% {\ifthenelse{\equal{\vendor}{xiaomi}}
+%   {
+%     % \vendor {}
+%     \input{./latex/router/\vendor/install.tex}
+%   }{} \\
+% }
+
+% {\Huge Variables:} \\
+% \routername} \\
+% \vendor} \\
+% \type} \\
+% \status} \\
+
+
+
+
