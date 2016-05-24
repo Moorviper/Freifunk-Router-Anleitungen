@@ -216,24 +216,24 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
   # pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile  ;
   # pdflatex  -latexoption="--shell-escape -interaction=nonstopmode  -synctex=1" $texfile  ;
 
-  echo "";
-  echo " PDFLaTeX"
-   ist=`expr $ist + 1`
+  # echo "";
+  # echo " PDFLaTeX"
+   # ist=`expr $ist + 1`
   # echo $ist;
-  proz=$(bc -l <<< 'scale=2; '$soll'/'$ist'')
+  # proz=$(bc -l <<< 'scale=2; '$soll'/'$ist'')
   # let progress=100/$proz
-  echo " zu "$(bc -l <<< 'scale=2; 100/'$proz'') "% fertig";
-  echo "=============================================";
+  # echo " zu "$(bc -l <<< 'scale=2; 100/'$proz'') "% fertig";
+  # echo "=============================================";
   # echo " building $routers first run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
   # echo " building $routers second run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
   # echo "=============================================";
-  echo " building $routers first run ...";
+  # echo " building $routers first run ...";
   pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
-  echo " building $routers second run ...";
+  # echo " building $routers second run ...";
   pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
-  echo "=============================================";
+  # echo "=============================================";
   # echo " building $routers first run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
   # echo " building $routers second run ...";
