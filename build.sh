@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 #
 #  All routers (Gluon 2015.1.2) Freifunk Fulda
@@ -256,7 +256,7 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
     then
     mv $pdffile ./pdfbuild ;
   fi
-  
+
   # cleanup
   rm $texfile ;
   # rm $routerfile;
