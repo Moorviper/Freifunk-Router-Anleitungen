@@ -293,7 +293,7 @@ do
   # mkdir $routers ;
 done
 
-	echo "### Gluon 2016.x dive" >> wiki.txt
+	echo "### Gluon 2016.x broken device" >> wiki.txt
 	echo "***" >> wiki.txt
 
 	echo "### Xiaomi" >> wiki.txt

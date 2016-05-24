@@ -214,3 +214,139 @@ x86-virtualbox.vdi |<img src=https://raw.githubusercontent.com/Moorviper/Freifun
 |   |   |   |   |   |
 x86-vmware.vmdk |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/x86-vmware.vmdk/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/x86-vmware.vmdk/back.jpg height=200 width=222>   |
 |   |   |   |   |   |
+### Gluon 2016.x dive
+***
+### Xiaomi
+***
+| Router Name  	| front | back |
+|---	        |---	|---   |
+xiaomi-miwifi-mini |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/xiaomi-miwifi-mini/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/xiaomi-miwifi-mini/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+### Gluon 2016.1 added Device
+***
+### ar71xx-generic
+***
+| Router Name  	| front | back |
+|---	        |---	|---   |
+buffalo-wzr-hp-g300nh |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/buffalo-wzr-hp-g300nh/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/buffalo-wzr-hp-g300nh/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+d-link-dir-505-rev-a1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/d-link-dir-505-rev-a1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/d-link-dir-505-rev-a1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-cpe210-v1.1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-cpe210-v1.1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-cpe210-v1.1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-cpe220-v1.1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-cpe220-v1.1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-cpe220-v1.1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-cpe510-v1.1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-cpe510-v1.1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-cpe510-v1.1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-cpe520-v1.1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-cpe520-v1.1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-cpe520-v1.1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wa901n-nd-v1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wa901n-nd-v1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wa901n-nd-v1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr710n-v2 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr710n-v2/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr710n-v2/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr710n-v2.1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr710n-v2.1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr710n-v2.1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr801n-nd-v1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr801n-nd-v1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr801n-nd-v1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr801n-nd-v2 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr801n-nd-v2/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr801n-nd-v2/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr841n-nd-v10 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr841n-nd-v10/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr841n-nd-v10/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr843n-nd-v1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr843n-nd-v1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr843n-nd-v1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr940n-v1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr940n-v1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr940n-v1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr940n-v2 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr940n-v2/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr940n-v2/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr940n-v3 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr940n-v3/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr940n-v3/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr941n-nd-v6 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr941n-nd-v6/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr941n-nd-v6/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wr1043n-nd-v3 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr1043n-nd-v3/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wr1043n-nd-v3/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-airgateway |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-airgateway/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-airgateway/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-airrouter |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-airrouter/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-airrouter/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-bullet-m |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-bullet-m/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-bullet-m/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-bullet-m2 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-bullet-m2/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-bullet-m2/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-bullet-m5 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-bullet-m5/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-bullet-m5/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-loco-m-xw |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-loco-m-xw/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-loco-m-xw/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-ls-sr71 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-ls-sr71/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-ls-sr71/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-nanostation-loco-m2 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-loco-m2/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-loco-m2/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-nanostation-loco-m5 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-loco-m5/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-loco-m5/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-nanostation-m |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-m/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-m/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-nanostation-m-xw |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-m-xw/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-m-xw/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-nanostation-m2 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-m2/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-m2/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-nanostation-m5 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-m5/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-nanostation-m5/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-picostation-m2 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-picostation-m2/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-picostation-m2/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-rocket-m-xw |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-rocket-m-xw/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-rocket-m-xw/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-rocket-m2 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-rocket-m2/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-rocket-m2/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-rocket-m5 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-rocket-m5/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-rocket-m5/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-unifi-ap-pro |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-unifi-ap-pro/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-unifi-ap-pro/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-unifi |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-unifi/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-unifi/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-unifiap-outdoor+ |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-unifiap-outdoor+/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-unifiap-outdoor+/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+ubiquiti-unifiap-outdoor |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-unifiap-outdoor/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/ubiquiti-unifiap-outdoor/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+wd-my-net-n600 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/wd-my-net-n600/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/wd-my-net-n600/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+wd-my-net-n750 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/wd-my-net-n750/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/wd-my-net-n750/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+### Gluon 2016.1.1 added Device
+***
+### ar71xx-generic
+***
+| Router Name  	| front | back |
+|---	        |---	|---   |
+onion-omega |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/onion-omega/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/onion-omega/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-mr13u-v1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-mr13u-v1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-mr13u-v1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+### Gluon 2016.1.3 added Device
+***
+### ar71xx-generic
+***
+| Router Name  	| front | back |
+|---	        |---	|---   |
+alfa-ap121 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/alfa-ap121/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/alfa-ap121/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+alfa-ap121u |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/alfa-ap121u/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/alfa-ap121u/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+alfa-hornet-ub |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/alfa-hornet-ub/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/alfa-hornet-ub/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+tp-link-tl-wa7510n-v1 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wa7510n-v1/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/tp-link-tl-wa7510n-v1/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+### Gluon 2016.1.4 added Device
+***
+### ar71xx-generic
+***
+| Router Name  	| front | back |
+|---	        |---	|---   |
+8devices-carambola2-board |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/8devices-carambola2-board/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/8devices-carambola2-board/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+meraki-mr12 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/meraki-mr12/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/meraki-mr12/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+meraki-mr16 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/meraki-mr16/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/meraki-mr16/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+meraki-mr62 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/meraki-mr62/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/meraki-mr62/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
+meraki-mr66 |<img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/meraki-mr66/front.jpg height=200 width=222>    | <img src=https://raw.githubusercontent.com/Moorviper/Freifunk-Router-Anleitungen/master/meraki-mr66/back.jpg height=200 width=222>   |
+|   |   |   |   |   |
