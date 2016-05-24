@@ -1,5 +1,10 @@
 #! /bin/sh
-ROUTERS="\
+
+#
+#  All routers (Gluon 2015.1.2) Freifunk Fulda
+#
+
+ROUTERSsdsd="\
 buffalo-wzr-hp-ag300h-wzr-600dhp \
 buffalo-wzr-hp-g450h \
 d-link-dir-615-rev-c1 \
@@ -78,73 +83,134 @@ ubiquiti-unifiap-outdoor \
 x86-generic.img \
 x86-kvm.img \
 x86-virtualbox.vdi \
+x86-vmware.vmdk \
+xiaomi-miwifi-mini"
+
+#
+#   for quick testing
+#
+
+ROUTERSdfd="\
+tp-link-tl-mr3020-v1 \
+tp-link-tl-mr3040-v1 \
+tp-link-tl-mr3040-v2 \
+tp-link-tl-mr3220-v1 \
+tp-link-tl-mr3220-v2 \
+tp-link-tl-mr3420-v1 \
+tp-link-tl-mr3420-v2 \
+gl-inet-6416a-v1 \
+linksys-wrt160nl \
+netgear-wndr3700 \
+tp-link-tl-wa850re-v1 \
+tp-link-tl-wa860re-v1 \
+tp-link-tl-wdr4300-v1 \
+ubiquiti-bullet-m \
 x86-vmware.vmdk"
 
-ROUTERSas="\
-tp-link-tl-wdr3500-v1 \
-tp-link-tl-wdr3600-v1 \
-tp-link-tl-wdr4300-v1 \
-tp-link-tl-wdr4900-v1 \
-x86-generic.img \
-x86-kvm.img \
-x86-virtualbox.vdi \
-x86-vmware.vmdk"
+ROUTERS="\
+tp-link-tl-wr1043n-nd-v1 \
+gl-inet-6416a-v1 \
+linksys-wrt160nl \
+netgear-wndr3700 \
+tp-link-tl-wa850re-v1"
+
+ROUTERSsd="\
+xiaomi-miwifi-mini"
+
+ROUTERSds="\
+gl-inet-6416a-v1"
+
+#
+#   Remove the pdfbuild folder before rebuild them
+#
+#   add's a gitignore file to it.
+#
 
 rm -R pdfbuild;
 mkdir pdfbuild;
 cp gitignorePdfFolder pdfbuild/.gitignore;
 
+#
+# count the amount of routers for display progress at the pdf-building
+#
+
 soll=0
 ist=0
+
 for routers in `echo $ROUTERS` 
 do
   soll=`expr $soll + 1`
 done
-# echo $soll
 
+#
 for routers in `echo $ROUTERS` 
 do
+#
+# remove LaTeX files from last router
+#
 rm *.log 1>/dev/null 2>&1 ;
 rm -R _minted* 1>/dev/null 2>&1 ;
 rm *.out 1>/dev/null 2>&1 ;
 rm *.aux 1>/dev/null 2>&1 ;
 rm *.synctex.gz 1>/dev/null 2>&1 ;
-	clear;
-	echo "";
+	# clear;
+	# echo "";
+  #   Displays the actual routername which is in progress
   echo " $routers ";
+
+  # definition of the file suffixes
   texsuffix=".tex"
   pdfsuffix=".pdf"
   stysuffix=".sty"
+
+  # definition of the source and outputfile
   texfile=$routers$texsuffix
   pdffile=$routers$pdfsuffix
+
+  # definition subfolderpath's
   router="router"
   routerfile=$router$stysuffix
   specsPath1="$routers"
+
+  # specification texfile
   specsPath2="/specs.tex"
+  # front picture of the router as pdf
   frontpath1="/front.pdf"
+  # back picture of the router as pdf
   frontpath2="/back.pdf"
+
+  # definition of the filepath's
   specsPath=$specsPath1$specsPath2
   frontpath=$specsPath1$frontpath1
   backpath=$specsPath1$frontpath2
+  switchpath=$specsPath1$frontpath2
+  routerswitchcrea="/switch.sty"
+  routerswitch=$specsPath1$routerswitchcrea
+
+  # routerswitchcrea="/switch.sty"
+  # routerswitch=$specsPath1$routerswitchcrea
   # echo $specsPath;
   touch $texfile;
   rm $routerfile;
   touch $routerfile;
 
-  # Router
-  router1="\\\newcommand{\\\routername}{"
-  router2="$routers"
-  router3="}"
-  routername=$router1$router2$router3
-  echo $routername >> $routerfile;
+  # # Router
+  # router1="\\\newcommand{\\\routername}{"
+  # router2="$routers"
+  # router3="}"
+  # routername=$router1$router2$router3
+  # echo $routername >> $routerfile;
 
+  # cp $routerfile $routerswitch;
   cat Anleitung.tex >> $texfile;
   rm specs.tex ;
   rm front.pdf ;
   rm back.pdf ;
+  rm switch.sty;
   cp $specsPath specs.tex ;
   cp $frontpath front.pdf ;
   cp $backpath back.pdf ;
+  cp $routerswitch switch.sty ;
 
   # build
   # pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile  ;
@@ -158,20 +224,31 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
   # let progress=100/$proz
   echo " zu "$(bc -l <<< 'scale=2; 100/'$proz'') "% fertig";
   echo "=============================================";
+  # echo " building $routers first run ...";
+  # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
+  # echo " building $routers second run ...";
+  # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
+  # echo "=============================================";
   echo " building $routers first run ...";
-  /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
+  pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
   echo " building $routers second run ...";
-  /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
+  pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
   echo "=============================================";
+  # echo " building $routers first run ...";
+  # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
+  # echo " building $routers second run ...";
+  # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
+  # echo "=============================================";
   mv $pdffile ./pdfbuild ;
   # cleanup
   rm $texfile ;
   # rm $routerfile;
   # mkdir $routers ;
-  echo "";
-  echo "";
-  echo "";
-done
+  # echo "";
+  # echo "";
+  # echo "";
+done;
+
 rm *.log 1>/dev/null 2>&1 ;
 rm -R _minted* 1>/dev/null 2>&1 ;
 rm *.out 1>/dev/null 2>&1 ;

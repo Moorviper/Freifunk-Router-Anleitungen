@@ -1,7 +1,7 @@
 language: sh
 
 install:
-  sudo apt-get install texlive texlive-lang-german texlive-doc-de texlive-latex-extra 
+  sudo apt-get install texlive texlive-lang-german texlive-doc-de texlive-latex-extra python3-pygments 
 
 # before_script:
 #     
