@@ -1,0 +1,7 @@
+language: sh
+
+# before_script:
+#     ***
+
+script:
+    - sh build.sh
