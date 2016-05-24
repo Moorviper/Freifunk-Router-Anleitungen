@@ -7,4 +7,4 @@ before_script:
     #sudo su; sh ./build.sh
 
 script:
-    - sudo ./build.sh
+    - sudo sh build.sh
