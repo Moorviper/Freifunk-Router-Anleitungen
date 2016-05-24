@@ -1,7 +1,10 @@
 language: sh
 
+install:
+  sudo apt-get install texlive texlive-lang-german texlive-doc-de texlive-latex-extra 
+
 # before_script:
-#     ***
+#     
 
 script:
     - sh build.sh
