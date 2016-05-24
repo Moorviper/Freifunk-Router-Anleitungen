@@ -126,7 +126,7 @@ gl-inet-6416a-v1"
 #   add's a gitignore file to it.
 #
 
-rm -R pdfbuild;
+# rm -R pdfbuild;
 mkdir pdfbuild;
 cp gitignorePdfFolder pdfbuild/.gitignore;
 
@@ -203,10 +203,23 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
 
   # cp $routerfile $routerswitch;
   cat Anleitung.tex >> $texfile;
-  rm specs.tex ;
-  rm front.pdf ;
-  rm back.pdf ;
-  rm switch.sty;
+  if [ -e "specs.tex" ]
+    then
+    rm specs.tex ;
+  fi
+  if [ -e "front.pdf" ]
+    then
+    rm front.pdf ;
+  fi
+  if [ -e "back.pdf" ]
+    then
+    rm back.pdf;
+  fi
+  if [ -e "specs.tex" ]
+    then
+    rm switch.sty ;
+  fi
+
   if [ -e "$specsPath" ]
     then
     cp $specsPath specs.tex ;
