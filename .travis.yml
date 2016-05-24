@@ -1,4 +1,4 @@
-language: sh
+language: bash
 
 install:
   sudo apt-get install texlive texlive-lang-german texlive-doc-de texlive-latex-extra python3-pygments 
@@ -7,4 +7,4 @@ install:
 #     
 
 script:
-    - sh build.sh
+    - ./build.sh

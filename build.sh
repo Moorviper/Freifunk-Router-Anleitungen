@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 #
 #  All routers (Gluon 2015.1.2) Freifunk Fulda
@@ -156,7 +156,7 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
 	# clear;
 	# echo "";
   #   Displays the actual routername which is in progress
-  echo " $routers ";
+  # echo " $routers ";
 
   # definition of the file suffixes
   texsuffix=".tex"
@@ -207,10 +207,23 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
   rm front.pdf ;
   rm back.pdf ;
   rm switch.sty;
-  cp $specsPath specs.tex ;
-  cp $frontpath front.pdf ;
-  cp $backpath back.pdf ;
-  cp $routerswitch switch.sty ;
+  if [ -e "$specsPath" ]
+    then
+    cp $specsPath specs.tex ;
+  fi
+  if [ -e "$frontpath" ]
+    then
+    cp $frontpath front.pdf ;
+  fi
+  if [ -e "$backpath" ]
+    then
+    cp $backpath back.pdf ;
+  fi
+  if [ -e "$routerswitch" ]
+    then
+    cp $routerswitch switch.sty ;
+  fi
+  
 
   # build
   # pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile  ;
@@ -239,7 +252,11 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
   # echo " building $routers second run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
   # echo "=============================================";
-  mv $pdffile ./pdfbuild ;
+  if [ -e "$pdffile" ]
+    then
+    mv $pdffile ./pdfbuild ;
+  fi
+  
   # cleanup
   rm $texfile ;
   # rm $routerfile;
