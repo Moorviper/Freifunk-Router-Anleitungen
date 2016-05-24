@@ -135,7 +135,7 @@ gl-inet-6416a-v1"
 #
 
 # rm -R pdfbuild;
-mkdir pdfbuild;
+- mkdir pdfbuild;
 # cp gitignorePdfFolder pdfbuild/.gitignore;
 
 #
