@@ -128,19 +128,19 @@ gl-inet-6416a-v1"
 
 # rm -R pdfbuild;
 mkdir pdfbuild;
-cp gitignorePdfFolder pdfbuild/.gitignore;
+# cp gitignorePdfFolder pdfbuild/.gitignore;
 
 #
 # count the amount of routers for display progress at the pdf-building
 #
 
-soll=0
-ist=0
+# soll=0
+# ist=0
 
-for routers in `echo $ROUTERS` 
-do
-  soll=`expr $soll + 1`
-done
+# for routers in `echo $ROUTERS` 
+# do
+#   soll=`expr $soll + 1`
+# done
 
 #
 for routers in `echo $ROUTERS` 
@@ -191,7 +191,11 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
   # routerswitch=$specsPath1$routerswitchcrea
   # echo $specsPath;
   touch $texfile;
-  rm $routerfile;
+  if [ -e $routerfile ]
+    then
+    rm $routerfile ;
+  fi
+  #rm $routerfile;
   touch $routerfile;
 
   # # Router
@@ -220,19 +224,19 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
     rm switch.sty ;
   fi
 
-  if [ -e "$specsPath" ]
+  if [ -e $specsPath ]
     then
     cp $specsPath specs.tex ;
   fi
-  if [ -e "$frontpath" ]
+  if [ -e $frontpath ]
     then
     cp $frontpath front.pdf ;
   fi
-  if [ -e "$backpath" ]
+  if [ -e $backpath ]
     then
     cp $backpath back.pdf ;
   fi
-  if [ -e "$routerswitch" ]
+  if [ -e $routerswitch ]
     then
     cp $routerswitch switch.sty ;
   fi
