@@ -1,0 +1,27 @@
+% specs from given folder
+\small
+\color{black}
+\vspace{0.3cm}
+\begin{center} 
+\begin{tikzpicture}
+\clip node (m) [matrix,matrix of nodes,
+fill=FFmagenta!20,inner sep=0pt,
+nodes in empty cells,
+nodes={minimum height=1cm,minimum width=2.6cm,anchor=center,outer sep=0,font=\sffamily},
+row 1/.style={nodes={fill=FFmagenta,text=white}},
+column 1/.style={nodes={fill=FFmagenta,text=white,align=left,text width=3cm,text depth=0.5ex}},
+column 2/.style={text width=12cm,align=left,every even row/.style={nodes={fill=white}}},
+column 3/.style={text width=3cm,align=center,every even row/.style={nodes={fill=white}},},
+row 1 column 1/.style={nodes={fill=FFmagenta}},%									1. spalte oben
+prefix after command={[rounded corners=4mm] (m.north east) rectangle (m.south west)}
+] {
+& $\ \ $ tp-link-tl-wr710n-v2.1 \\
+$\ \ $ CPU   			& $\ \ $ Atheros AR9331 @400 MHz \\ 
+$\ \ $ RAM 				& $\ \ $ 32 MB \\ 
+$\ \ $ Flash			& $\ \ $ 8 MB \\ 
+$\ \ $ WAN/LAN			& $\ \ $ 1 x1 10/100 WAN	 \\ 
+$\ \ $ USB				& $\ \ $ 1x v2.0 micro-USB \\ 
+$\ \ $ WIFI 			& $\ \ $ 150 Mbit (1x1:1) im 2.4 Ghz Band \\
+};
+\end{tikzpicture}
+\end{center} 
