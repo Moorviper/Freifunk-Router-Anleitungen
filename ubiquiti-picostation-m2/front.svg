@@ -1,0 +1,54 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1280 1150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g id="Picostation">
+        <path d="M754.591,487.732C754.591,480.618 748.815,474.842 741.701,474.842L582.958,474.842C575.843,474.842 570.068,480.618 570.068,487.732L570.068,1094.3C570.068,1101.41 575.843,1107.19 582.958,1107.19L741.701,1107.19C748.815,1107.19 754.591,1101.41 754.591,1094.3L754.591,487.732Z" style="fill:white;stroke-width:1px;stroke:rgb(115,115,115);"/>
+        <path d="M569.994,982.122C571.664,983.501 573.518,984.437 575.597,984.837L748.806,984.837C750.944,984.606 752.877,983.66 754.639,982.122" style="fill:white;stroke-width:1px;stroke:rgb(115,115,115);"/>
+        <path d="M676.89,517.97C676.89,517.388 676.417,516.915 675.835,516.915L634.741,516.915C634.158,516.915 633.685,517.388 633.685,517.97L633.685,628.506C633.685,629.088 634.158,629.561 634.741,629.561L675.835,629.561C676.417,629.561 676.89,629.088 676.89,628.506L676.89,517.97Z" style="fill:white;stroke-width:1px;stroke:rgb(115,115,115);"/>
+        <path d="M642.422,524.121L650.863,524.121L650.863,585.951L648.201,585.951C647.318,564.958 645.817,544.192 642.422,524.121Z" style="fill:url(#_Linear1);stroke-width:0.02px;stroke:rgb(128,128,128);"/>
+        <g id="LED">
+            <g transform="matrix(1,0,0,1,0.0819723,87.9629)">
+                <rect x="654.972" y="523.867" width="13.363" height="9.089" style="fill:rgb(172,192,76);stroke-width:1px;stroke:rgb(172,192,76);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-0.136906,70.3778)">
+                <rect x="654.972" y="523.867" width="13.363" height="9.089" style="fill:rgb(172,192,76);stroke-width:1px;stroke:rgb(172,192,76);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,0.331697,52.869)">
+                <rect x="654.972" y="523.867" width="13.363" height="9.089" style="fill:rgb(212,111,80);stroke-width:1px;stroke:rgb(212,111,80);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,0.00643181,35.2151)">
+                <rect x="654.972" y="523.867" width="13.363" height="9.089" style="fill:rgb(220,128,68);stroke-width:1px;stroke:rgb(220,128,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-0.0147013,17.3815)">
+                <rect x="654.972" y="523.867" width="13.363" height="9.089" style="fill:rgb(172,192,76);stroke-width:1px;stroke:rgb(172,192,76);"/>
+            </g>
+            <rect x="654.972" y="523.867" width="13.363" height="9.089" style="fill:rgb(172,192,76);stroke-width:1px;stroke:rgb(172,192,76);"/>
+        </g>
+        <g id="Powerknopf">
+            <ellipse cx="647.409" cy="617.797" rx="3.388" ry="3.046" style="fill:none;stroke-width:0.9px;stroke-linecap:butt;stroke:rgb(115,115,115);"/>
+            <path d="M648.443,613.778C648.443,613.259 648.022,612.838 647.503,612.838C646.984,612.838 646.563,613.259 646.563,613.778L646.563,617.598C646.563,618.117 646.984,618.538 647.503,618.538C648.022,618.538 648.443,618.117 648.443,617.598L648.443,613.778Z" style="fill:rgb(102,102,102);stroke-width:0.5px;stroke:white;"/>
+        </g>
+        <g id="Ethernet - Beschriftung">
+            <path d="M644.221,597.168L642.277,599.1L644.221,601.046" style="fill:none;stroke-width:0.85px;stroke:rgb(102,102,102);"/>
+            <path d="M650.236,597.168L652.262,599.1L650.236,601.07" style="fill:none;stroke-width:0.85px;stroke:rgb(102,102,102);"/>
+            <path d="M645.037,599.408L645.485,599.408" style="fill:none;stroke-width:0.85px;stroke:rgb(102,102,102);"/>
+            <g transform="matrix(1,0,0,1,1.97161,0)">
+                <path d="M645.037,599.408L645.485,599.408" style="fill:none;stroke-width:0.85px;stroke:rgb(102,102,102);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,3.97774,0.010644)">
+                <path d="M645.037,599.408L645.485,599.408" style="fill:none;stroke-width:0.85px;stroke:rgb(102,102,102);"/>
+            </g>
+        </g>
+        <g id="Antenne">
+            <path d="M637.787,474.816L685.891,474.816L685.891,434.622L685.891,370.79C685.001,322.878 683.118,275.45 677.867,229.666L675.84,185.066L675.198,78.658L648.533,78.658L647.274,185.066C647.056,199.996 646.381,214.864 645.217,229.666C640.041,276.239 638.073,323.358 637.95,370.79L637.95,434.622L637.787,474.816Z" style="fill:white;stroke-width:0.85px;stroke:rgb(115,115,115);"/>
+            <rect x="645.82" y="80.714" width="32.762" height="2.004" style="fill:white;stroke-width:0.85px;stroke-linecap:butt;stroke:rgb(115,115,115);"/>
+            <g transform="matrix(1,0,0,1,-0.168114,4.64385)">
+                <rect x="645.82" y="80.714" width="32.762" height="2.004" style="fill:white;stroke-width:0.85px;stroke-linecap:butt;stroke:rgb(115,115,115);"/>
+            </g>
+            <path d="M645.841,78.658L678.455,78.658L678.455,63.75C675.464,46.452 649.743,44.465 645.841,63.75L645.841,78.658Z" style="fill:white;stroke-width:0.85px;stroke:rgb(115,115,115);"/>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-0.0383291,-62.8505,62.8505,-0.0383291,651.078,586.747)"><stop offset="0%" style="stop-color:white;stop-opacity:1"/><stop offset="100%" style="stop-color:rgb(11,93,141);stop-opacity:1"/></linearGradient>
+    </defs>
+</svg>
