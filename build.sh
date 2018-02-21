@@ -153,10 +153,13 @@ rm -R _minted* 1>/dev/null 2>&1 ;
 rm *.out 1>/dev/null 2>&1 ;
 rm *.aux 1>/dev/null 2>&1 ;
 rm *.synctex.gz 1>/dev/null 2>&1 ;
-	# clear;
+clear;
 	# echo "";
   #   Displays the actual routername which is in progress
   # echo " $routers ";
+  
+  # source path
+  source="./router/"
 
   # definition of the file suffixes
   texsuffix=".tex"
@@ -170,7 +173,7 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
   # definition subfolderpath's
   router="router"
   routerfile=$router$stysuffix
-  specsPath1="$routers"
+  specsPath1="$source$routers"
 
   # specification texfile
   specsPath2="/specs.tex"
@@ -258,12 +261,12 @@ rm *.synctex.gz 1>/dev/null 2>&1 ;
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
   # echo " building $routers second run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
-  # echo "=============================================";
-  # echo " building $routers first run ...";
+  echo "=============================================";
+  echo " building $routers first run ...";
   pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
-  # echo " building $routers second run ...";
+  echo " building $routers second run ...";
   pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
-  # echo "=============================================";
+  echo "=============================================";
   # echo " building $routers first run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
   # echo " building $routers second run ...";
