@@ -120,6 +120,7 @@ gl-inet-6416a-v1"
 
 # rm -R pdfbuild;
 mkdir pdfbuild;
+
 # cp gitignorePdfFolder pdfbuild/.gitignore;
 
 #
@@ -259,7 +260,9 @@ clear;
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
   #echo "=============================================";
   echo "$routers";
-  latexdockercmd.sh arara $texfile 1>/dev/null 2>&1 ;
+  latexdockercmd.sh arara -v $texfile
+  latexdockercmd.sh arara -v $texfile
+  #1>/dev/null 2>&1 ;
   #latexdockercmd.sh arara $texfile - v 1>/dev/null 2>&1 ;
   #echo " building $routers second run ...";
   #pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
@@ -282,6 +285,12 @@ clear;
   # echo "";
   # echo "";
 done;
+rm Anleitung.pdf;
+rm back.pdf;
+rm dummy.pdf;
+rm front.pdf;
+rm xiaomi-miwifi-mini-demo.pdf;
+rm tp-link-cpe210-v1.0-marburg-test.pdf;
 
 echo "=============================================";
 echo ""
