@@ -259,10 +259,10 @@ clear;
   # echo " building $routers second run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
   #echo "=============================================";
-  echo "$routers";
+  #echo "$routers";
   echo "$texfile";
-  sh latexdockercmd.sh arara -v $texfile
-  sh latexdockercmd.sh arara -v $texfile
+  sh latexdockercmd.sh arara $texfile
+  sh latexdockercmd.sh arara $texfile
   #1>/dev/null 2>&1 ;
   #latexdockercmd.sh arara $texfile - v 1>/dev/null 2>&1 ;
   #echo " building $routers second run ...";
