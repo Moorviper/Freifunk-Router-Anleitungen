@@ -4,7 +4,7 @@
 #  All routers (Gluon 2015.1.2) Freifunk Fulda
 #
 
-ROUTERS="\
+ROUTERSsss="\
 buffalo-wzr-hp-ag300h-wzr-600dhp \
 buffalo-wzr-hp-g450h \
 d-link-dir-615-rev-c1 \
@@ -107,7 +107,7 @@ tp-link-tl-wdr4300-v1 \
 ubiquiti-bullet-m \
 x86-vmware.vmdk"
 
-ROUTERSsdsd="\
+ROUTERS="\
 tp-link-tl-wr1043n-nd-v1 \
 gl-inet-6416a-v1 \
 linksys-wrt160nl \
@@ -141,6 +141,10 @@ mkdir pdfbuild;
 # do
 #   soll=`expr $soll + 1`
 # done
+echo "==============================================";
+echo " Building pdf files for the different routers"
+echo "==============================================";
+
 
 #
 for routers in `echo $ROUTERS`
@@ -261,13 +265,13 @@ clear;
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
   # echo " building $routers second run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
-  echo "=============================================";
-  echo " building $routers ...";
+  #echo "=============================================";
+  echo "$routers";
   latexdockercmd.sh arara $texfile - v 1>/dev/null 2>&1 ;
   #latexdockercmd.sh arara $texfile - v 1>/dev/null 2>&1 ;
   #echo " building $routers second run ...";
   #pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
-  echo "=============================================";
+  #echo "=============================================";
   # echo " building $routers first run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
   # echo " building $routers second run ...";
@@ -287,11 +291,17 @@ clear;
   # echo "";
 done;
 
+echo "=============================================";
+echo ""
+echo " compressing pdf files:"
+echo " tar cfvj anleitungen.tar.bz2 ./pdfbuild/"
+echo ""
+echo "=============================================";
 tar cfvj anleitungen.tar.bz2 ./pdfbuild/
 
-rm *.log 1>/dev/null 2>&1 ;
-rm -R _minted* 1>/dev/null 2>&1 ;
-rm *.out 1>/dev/null 2>&1 ;
-rm *.aux 1>/dev/null 2>&1 ;
-rm *.synctex.gz 1>/dev/null 2>&1 ;
-rm *.pyg 1>/dev/null 2>&1 ;
+# rm *.log 1>/dev/null 2>&1 ;
+# rm -R _minted* 1>/dev/null 2>&1 ;
+# rm *.out 1>/dev/null 2>&1 ;
+# rm *.aux 1>/dev/null 2>&1 ;
+# rm *.synctex.gz 1>/dev/null 2>&1 ;
+# rm *.pyg 1>/dev/null 2>&1 ;
