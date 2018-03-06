@@ -4,7 +4,7 @@
 #  All routers (Gluon 2015.1.2) Freifunk Fulda
 #
 
-ROUTERSsdsd="\
+ROUTERS="\
 buffalo-wzr-hp-ag300h-wzr-600dhp \
 buffalo-wzr-hp-g450h \
 d-link-dir-615-rev-c1 \
@@ -107,7 +107,7 @@ tp-link-tl-wdr4300-v1 \
 ubiquiti-bullet-m \
 x86-vmware.vmdk"
 
-ROUTERS="\
+ROUTERSsdsd="\
 tp-link-tl-wr1043n-nd-v1 \
 gl-inet-6416a-v1 \
 linksys-wrt160nl \
@@ -137,13 +137,13 @@ mkdir pdfbuild;
 # soll=0
 # ist=0
 
-# for routers in `echo $ROUTERS` 
+# for routers in `echo $ROUTERS`
 # do
 #   soll=`expr $soll + 1`
 # done
 
 #
-for routers in `echo $ROUTERS` 
+for routers in `echo $ROUTERS`
 do
 #
 # remove LaTeX files from last router
@@ -157,7 +157,7 @@ clear;
 	# echo "";
   #   Displays the actual routername which is in progress
   # echo " $routers ";
-  
+
   # source path
   source="./router/"
 
@@ -243,7 +243,7 @@ clear;
     then
     cp $routerswitch switch.sty ;
   fi
-  
+
 
   # build
   # pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile  ;
@@ -263,9 +263,10 @@ clear;
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
   echo "=============================================";
   echo " building $routers first run ...";
-  pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
+  latexdockercmd.sh arara $texfile - v 1>/dev/null 2>&1 ;
+  latexdockercmd.sh arara $texfile - v 1>/dev/null 2>&1 ;
   echo " building $routers second run ...";
-  pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
+  #pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
   echo "=============================================";
   # echo " building $routers first run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
@@ -286,6 +287,7 @@ clear;
   # echo "";
 done;
 
+zip ./pdfbuild/* anleitungen.zip
 rm *.log 1>/dev/null 2>&1 ;
 rm -R _minted* 1>/dev/null 2>&1 ;
 rm *.out 1>/dev/null 2>&1 ;
