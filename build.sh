@@ -260,6 +260,7 @@ clear;
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
   #echo "=============================================";
   echo "$routers";
+  echo "$texfile";
   sh latexdockercmd.sh arara -v $texfile
   sh latexdockercmd.sh arara -v $texfile
   #1>/dev/null 2>&1 ;
@@ -295,7 +296,7 @@ rm tp-link-cpe210-v1.0-marburg-test.pdf;
 echo "=============================================";
 echo ""
 echo " compressing pdf files:"
-echo " tar cfvj anleitungen.tar.bz2 ./pdfbuild/"
+echo " tar cfvj anleitungen.tar.bz2 *.pdf"
 echo ""
 echo "=============================================";
 tar cfvj anleitungen.tar.bz2 *.pdf
