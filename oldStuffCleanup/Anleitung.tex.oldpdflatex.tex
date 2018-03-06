@@ -1,0 +1,109 @@
+
+\documentclass[11pt, a4paper,ngerman]{article}
+
+\usepackage{switch}
+
+\usepackage{freifunk}
+\usepackage{routerhandler}
+
+% \usepackage{router}
+\usepackage{bookmark}
+\usepackage{ifthen}
+\usepackage{makebox}
+\usepackage{caption}
+
+\usetikzlibrary{patterns} % preamble
+\tcbuselibrary{skins} % preamble
+
+\usepackage{tikz}
+\usepackage{PTSansNarrow}
+\usetikzlibrary{matrix}
+
+\usepackage{pgfplots} 
+
+
+
+% Parameter
+\newcommand{\circdist}{1.2}  % Strecke center zum Mittelpunkt der Kreise
+\newcommand{\circrad}{7/4} % radius der Kreise
+\newcommand{\circlethickness}{6mm} % Dicke
+
+
+% Definition der Freifunk Farben
+
+\definecolor{FFgelb}{HTML}{FFB400}  
+\definecolor{FFmagenta}{HTML}{DC0067}
+\definecolor{FFblau}{HTML}{009EE0}
+
+\changefont{pag}{m}{n}
+
+\pgfplotsset{compat=1.12}
+
+\begin{document}
+
+\input{intro.tex}
+\input{specs.tex}
+\input{./latex/router/install.tex}
+\newpage
+\input{./latex/konsole.tex}
+\end{document}
+
+% \def\netgear{netgear}
+% \newpage
+% \vendor
+% {\huge test} \\
+% \newcommand{\routername}{netgear-wndr3700v2} ""
+
+% \ifthenelse{\equal{\vendor}{netgear}}{\input{./latex/router/install.tex}}{}
+% \ifthenelse{\equal{\vendor}{tplink}}{\input{./latex/router/install.tex}}{}
+% \ifthenelse{\equal{\vendor}{glnet}}{\input{./latex/router/install.tex}}{}
+
+% {\ifthenelse{\equal{\vendor}{ubiquiti}}
+%   % \vendor 
+%   \input{./latex/router/\vendor/install.tex}
+%   }{} \\
+% }
+
+
+% {\ifthenelse{\equal{\vendor}{linksys}}
+%   {
+%     % \vendor {}
+%     \input{./latex/router/\vendor/install.tex}
+%   }{} \\
+% }
+
+% {\ifthenelse{\equal{\vendor}{glnet}}
+%   {\input{./latex/router/\vendor/install.tex}}%
+%   {}%
+% }%
+
+% {\ifthenelse{\equal{\vendor}{dlink}}
+%   {
+%     % \vendor {}
+%     \input{./latex/router/\vendor/install.tex}
+%   }{} \\
+% }
+
+% {\ifthenelse{\equal{\vendor}{buffalo}}
+%   {
+%     % \vendor {}
+%     \input{./latex/router/\vendor/install.tex}
+%   }{} \\
+% }
+
+% {\ifthenelse{\equal{\vendor}{xiaomi}}
+%   {
+%     % \vendor {}
+%     \input{./latex/router/\vendor/install.tex}
+%   }{} \\
+% }
+
+% {\Huge Variables:} \\
+% \routername} \\
+% \vendor} \\
+% \type} \\
+% \status} \\
+
+
+
+
