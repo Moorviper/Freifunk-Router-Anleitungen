@@ -4,7 +4,7 @@
 #  All routers (Gluon 2015.1.2) Freifunk Fulda
 #
 
-ROUTERSsss="\
+ROUTERS="\
 buffalo-wzr-hp-ag300h-wzr-600dhp \
 buffalo-wzr-hp-g450h \
 d-link-dir-615-rev-c1 \
@@ -90,7 +90,7 @@ xiaomi-miwifi-mini"
 #   for quick testing
 #
 
-ROUTERS="\
+ROUTsddERS="\
 tp-link-tl-mr3020-v1 \
 tp-link-tl-mr3040-v1 \
 tp-link-tl-mr3040-v2 \
