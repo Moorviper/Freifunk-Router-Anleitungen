@@ -1,0 +1,146 @@
+%%
+%% This is file `prolog.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% pretprin.dtx  (with options: `prolog')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% You are *not* allowed to modify this file.
+%% 
+%% You are *not* allowed to distribute this file.
+%% For distribution of the original source see the terms
+%% for copying and modification in the file pretprin.dtx.
+%% 
+%% Programming languages pretty-printer package for LaTeX
+%% copyright (c) by Marcin Woli\'nski
+%%
+%%
+\NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{prolog}[1996/02/05 v0.0.02 Prolog pretty-printer]
+\@ifpackageloaded{pretprin}{}{\RequirePackage{pretprin}}
+\ProvidesPrettyprinter[prolog]{Prolog}{l}
+
+
+%%\DeclarePretprinHook{postparse}{%
+%%  \edef\thetranslation{\startpar${}\thetranslation$\par
+%%    \vskip-\baselineskip\medskip}}
+\DeclarePretprinHook{prescan}{\ifpp@displayed\par\startpar\fi\let\protect\relax$}
+\DeclarePretprinHook{postscan}{$\ifpp@displayed\par\vskip-\baselineskip\fi}
+
+
+\DeclareGroupByCatcode{a}{a}        % Alpha
+\DeclareGroup{a}|_|
+\DeclareGroup{d}|1234567890|        % Digits
+\makeatother
+\DeclareGroup*{m}!+-*/^<>=`:?@#&|\$! % syMbolic
+\makeatletter
+\DeclareGroup{t}|.|                 % doT
+\DeclareGroup{l}|!;()[]{},|         % Loners
+\DeclareGroup{w}| ^^I|             % White
+\DeclareGroup{e}|^^M|              % End of line
+\DeclareGroup{c}|%|                 % Comment
+\DeclareGroup{i}|~|                 % tIlde
+\CompileGroups
+
+\DeclareTransition 1-d->2.  % number starts
+\DeclareTransition 1-a->3.  % identifier starts
+\DeclareTransition 1-m->5.  % symbolic token starts
+\DeclareTransition 1-t->6.  % dot
+\DeclareTransition 1-e->7.  % end of line
+\DeclareTransition 1-i->13. % tilde
+\DeclareTransition 1-'->14. % quoted atom
+\DeclareTransition 1-"->15. % string
+\DeclareTransition 1-c->16. % comment
+\DeclareTransition 1-w->17. % eating white
+\DeclareTransition 1-l->18. % a loner
+
+\DeclareState{2}{#1}
+\DeclareTransition 2-d->2.  % number grows
+
+\DeclareState{3}{\setshortiden{#1}}
+\DeclareTransition 3-a->4.  % iden grows
+\DeclareTransition 3-d->4.  % iden grows
+
+\DeclareState{4}{\setiden{#1}}
+\DeclareTransition 4-a->4.  % iden grows
+\DeclareTransition 4-d->4.  % iden grows
+
+\DeclareKeywordState{5}{m}
+\DeclareTransition 5-m->5.  % symb grows
+\DeclareTransition 5-t->5.  % symb grows
+
+\DeclareKeywordState{6}{m}
+\DeclareTransition 6-m->5.  % the dot was really start of a symbolic token
+\DeclareTransition 6-w->19. % clause-ending dot
+\DeclareTransition 6-e->8.  %
+
+\DeclareState{7}{}
+\DeclareTransition 7-c->12. % full-line comment
+
+\DeclareState{8}{$.\endgraf\smallskip\startpar$}
+\DeclareTransition 8-c->11. % full-line comment
+
+\DeclareStateAction{11}{$.\endgraf\smallskip\startpar$\Pronlcomment}
+
+\DeclareStateAction{12}{\Pronlcomment}
+\def\Pronlcomment{$\bgroup\catcode`\ =10 \Procomment}%$
+
+\DeclareStateAction{13}{\Prochar}
+\def\Prochar#1{{\vphantom{|}^{\scriptscriptstyle\sim}%
+  \uccode`*=`#1\uppercase{\hbox{\tt*}}}\ContinueScan}
+
+\DeclareStateAction{14}{\Proquoted}
+\def\Proquoted#1'{\hbox{\tt'#1'}\ContinueScan}
+
+\DeclareStateAction{15}{\Prostring}
+\def\Prostring#1"{\hbox{\tt"#1"}\ContinueScan}
+
+\DeclareStateAction{16}{$\bgroup\catcode`\ =10 \Procomment}%$
+\bgroup\uccode`\*=`\^^M
+\uppercase{\egroup
+\def\Procomment#1*}{\egroup\optbrk\null\hbox{\quad\rm\%\quad#1}\hfil\break
+  $\ContinueScan}%$
+
+\DeclareState{17}{} % just keep going...
+
+\DeclareKeywordState{18}{m}
+
+\DeclareState{19}{$.\endgraf\smallskip\startpar$}
+
+\CompileScanner{1}{11}
+
+\def\startpar{\indent\hangindent=2\parindent}
+\def\setshortiden#1{\if_#1{\kern.1em\_\kern.1em}\else{\rm#1}\fi}
+\def\setiden#1{{\rm\pp@sanitizeunderline{#1}\/}}
+
+\KeywordDefault m{\mathbin{#1}}
+\Keyword m{:-}{\leftarrow\hfil\penalty10\hfilneg}
+\Keyword m{-->}{\longrightarrow\hfil\penalty10\hfilneg}
+\Keyword m{=}{=}
+\Keyword m{/}{/}
+\Keyword m{=<}{\leq}
+\Keyword m{>=}{\geq}
+\Keyword m{,}{,\ \optbrk}
+\Keyword m{;}{;\ \optbrk}
+\Keyword m{(}{(\multiply\commapenalty15 }
+\Keyword m{)}{\divide\commapenalty15)}
+\Keyword m{[}{[\multiply\commapenalty15 }
+\Keyword m{]}{\divide\commapenalty15]}
+\bgroup\lccode`+=`\{ \lccode`-=`\}
+\lowercase{\egroup
+\Keyword m{+}{\{\multiply\commapenalty15 }
+\Keyword m{-}{\divide\commapenalty15\}}
+}
+
+\newcount\commapenalty \commapenalty=17
+\def\optbrk{\hfil\penalty\commapenalty\hfilneg}
+
+\endinput
+%%
+%% End of file `prolog.sty'.

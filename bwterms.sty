@@ -1,0 +1,61 @@
+%%
+%% This is file `bwterms.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% pretprin.dtx  (with options: `terms,bwterms')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% You are *not* allowed to modify this file.
+%% 
+%% You are *not* allowed to distribute this file.
+%% For distribution of the original source see the terms
+%% for copying and modification in the file pretprin.dtx.
+%% 
+%% Programming languages pretty-printer package for LaTeX
+%% copyright (c) by Marcin Woli\'nski
+%%
+%%
+\NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bwterms}
+  [1998/03/17 Sample pretty-printer for a language of terms]
+\@ifpackageloaded{pretprin}{}{\RequirePackage{pretprin}}
+\ProvidesPrettyprinter{Terms}{t}
+\DeclareCategory{atom}
+\DeclareCategory{open}
+\DeclareCategory{close}
+\DeclareCategory{comma}
+\DeclareCategory{termhd}
+\DeclareCategory{term}
+\DeclareGroupByCatcode{l}{a}
+\DeclareGroup{w}"^^I^^M "
+\CompileGroups
+\DeclareTransition 1-l->2.
+\DeclareTransition 1-,->3.
+\DeclareTransition 1-(->4.
+\DeclareTransition 1-)->5.
+\DeclareTransition 1-w->6.
+\DeclareState{2}{\AppendElem{atom}{#1}}
+\DeclareTransition 2-l->2.
+\DeclareState{3}{\AppendElem{comma}{#1}}
+\DeclareState{4}{\AppendElem{open}{#1}}
+\DeclareState{5}{\AppendElem{close}{#1}}
+\DeclareState{6}{}
+\CompileScanner{1}{3}
+\DeclareProduction{atom,open}
+  \ThisElem\TwoElems{termhd}{#2#1}\ThisElem{1}
+\DeclareProduction{termhd,term,comma}
+  \ThisElem\ThreeElems{termhd}{#3\formatterm{#2}#1\ }\ThisElem{2}
+\DeclareProduction{termhd,term,close}
+  \ThisElem\ThreeElems{term}{#3\formatterm{#2}#1}\PrevElem{3}
+\DeclareProduction{atom}
+  \ThisElem\OneElem{term}{\textit{#1}}\PrevElem{4}
+\DeclareRobustCommand*\formatterm[1]{\fbox{#1}}
+\endinput
+%%
+%% End of file `bwterms.sty'.

@@ -1,0 +1,491 @@
+%%
+%% This is file `pretprin.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% pretprin.dtx  (with options: `main')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% You are *not* allowed to modify this file.
+%% 
+%% You are *not* allowed to distribute this file.
+%% For distribution of the original source see the terms
+%% for copying and modification in the file pretprin.dtx.
+%% 
+%% Programming languages pretty-printer package for LaTeX
+%% copyright (c) by Marcin Woli\'nski
+%%
+%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pretprin}[1996/06/03 v0.17
+                       Programming languages pretty-printer]
+
+\def\Name#1#2{\expandafter#1\csname#2\endcsname}
+\def\NameUse#1{\csname#1\endcsname}
+\def\afterfi#1#2\fi{\fi#1}
+\ifx\scantokens\@undefined
+ \newwrite\pp@scantokensstream
+ \def\scantokens#1{\bgroup
+   \@temptokena={#1}%
+   \immediate\openout\pp@scantokensstream=tmptokens.tmp
+   \newlinechar=`\^^M%
+   \immediate\write\pp@scantokensstream{\the\@temptokena}%
+   \immediate\closeout\pp@scantokensstream
+   \egroup
+   \input{tmptokens.tmp}%
+}
+\fi
+\def\pp@gettext{%
+  \expandafter\pp@defdoget\expandafter{\@currenvir}%
+  \bgroup\pp@setcatcodes
+  \pp@dogettext}
+
+\def\pp@setcatcodes{%
+  \let\do\@makeother
+  \dospecials
+  \@makeother\^^M}
+
+\bgroup
+\lccode`\`=`\\
+\lccode`\<=`\{
+\lccode`\>=`\}
+\lowercase{\egroup
+  \def\pp@defdoget#1{%
+    \edef\pp@dogettext##1`end<#1>{\egroup
+        \noexpand\StartScan##1\expandafter
+        \noexpand\csname pp@end of text lexem\endcsname
+        \noexpand\end{#1}}%
+    }
+  }
+
+\Name\def{pp@end of text lexem}{pp@end of text lexem}
+
+\def\pp@getshort{\bgroup
+  \pp@setcatcodes
+  \catcode`\{=1
+  \catcode`\}=2
+  \pp@dogetshort}
+
+\edef\pp@dogetshort#1{\egroup
+  \noexpand\StartScan#1\expandafter
+  \noexpand\csname pp@end of text lexem\endcsname
+  \noexpand\FinishPrettyprinting\egroup
+  }
+
+\newif\ifpp@numbered
+
+\def\ProvidesPrettyprinter{%
+  \@ifstar{\pp@numberedtrue\ProvidesPrettyprinterX}%
+          {\pp@numberedfalse\ProvidesPrettyprinterX}}
+
+\newcommand\ProvidesPrettyprinterX[3][\relax]{\def\pp@short{#3}%
+  \pp@newscanner
+  \pp@newparser
+  \ifx\relax#1\else
+    \Name\DeclareRobustCommand{#1}{\bgroup\pp@displayedfalse
+      \InitPrettyprinter{#3}\pp@getshort}%
+  \fi
+  \ifpp@numbered
+  \Name\newcommand{#2}{\par%<98/06/20> \par->\@restorepar->\def\par...
+    \pp@displayedtrue\pp@numberedtrue
+    \InitPrettyprinter{#3}\pp@gettext}%
+  \Name\newcommand{#2*}{\par
+    \pp@displayedtrue\pp@numberedfalse
+    \InitPrettyprinter{#3}\pp@gettext}%
+  \Name\let{end#2*}\FinishPrettyprinting
+  \else
+  \Name\newcommand{#2}{\par
+    \pp@displayedtrue\pp@numberedfalse
+    \InitPrettyprinter{#3}\pp@gettext}%
+  \fi
+  \Name\let{end#2}\FinishPrettyprinting
+  }
+\def\UsePrettyprinter#1{\def\pp@short{#1}%
+  \expandafter\let\expandafter\gettokenX\csname groups\pp@short\endcsname
+  \RedefineProdCheck{#1}%
+  }
+
+\def\DeclareGroupByCatcode#1#2{%
+ \edef\next{
+  \gdef\Name\noexpand{groups\pp@short\pp@groupprefix}####1%
+   \ifx\pp@groupprefix\@empty####2####3####4####5\fi{%
+   \noexpand\ifcat\noexpand\noexpand####\ifx\pp@groupprefix\@empty5\else1\fi#2%
+   \noexpand\expandafter\noexpand\gettokenXX\noexpand\expandafter#1%
+   \noexpand\else\noexpand\expandafter
+   \Name\noexpand{groups\pp@short\pp@groupprefix X}\noexpand\expandafter
+   ####\ifx\pp@groupprefix\@empty5\else1\fi
+   \noexpand\fi
+   \ifx\pp@groupprefix\@empty{####1}{####2}{####3}{####4}{####5}\fi}}%
+ \next
+ \xdef\pp@groupprefix{\pp@groupprefix X}%
+ \pp@enumgroups={}}
+
+\def\DeclareGroupByCatcode#1#2{%
+  \ifx\pp@groupprefix\@empty
+    \Name\pp@firstgroupbycatcode{groups\pp@short X}{#1}{#2}%
+  \else
+    \Name\pp@nextgroupbycatcode{groups\pp@short\pp@groupprefix X}{#1}{#2}%
+  \fi
+  \edef\pp@groupprefix{\pp@groupprefix X}
+  }
+
+\def\pp@firstgroupbycatcode#1#2#3{%
+  \Name\def{groups\pp@short}##1##2##3##4##5{%
+    \ifcat\noexpand##5#3%
+      \expandafter\gettokenXX\expandafter#2%
+    \else
+      \expandafter#1\expandafter##5%
+    \fi
+    {##1}{##2}{##3}{##4}{##5}}
+  }
+
+\def\pp@nextgroupbycatcode#1#2#3{%
+  \Name\def{groups\pp@short\pp@groupprefix}##1{%
+    \ifcat\expandafter##1#3%
+      \expandafter\gettokenXX\expandafter#2%
+    \else
+      \expandafter#1\expandafter##1%
+    \fi}}
+
+\newtoks\pp@enumgroups
+
+\def\DeclareGroup#1#2{%
+ \global\pp@enumgroups\expandafter{\the\pp@enumgroups#2\@g@r@p@{#1}}}
+
+\def\DeclareGroup{%
+  \@ifstar{\pp@declaregroup{}}%
+          {\pp@declaregroup{\catcode`\^=7 }}}
+
+\def\pp@declaregroup#1#2#3{%
+  \def\pp@getchargroup##1#3{\egroup
+    \global\pp@enumgroups\expandafter{\the\pp@enumgroups##1\@g@r@p@{#2}}}%
+  \bgroup\pp@setcatcodes#1%
+  \pp@getchargroup
+  }
+
+\def\CompileGroups{%
+ \Name\edef{groups\pp@short\pp@groupprefix}##1{%
+  \def\noexpand\next####1##1####2\noexpand\@g@r@p@####3####4\noexpand\qStop{%
+    \noexpand\expandafter\noexpand\gettokenXX\noexpand\expandafter####3}%
+  \noexpand\next\the\pp@enumgroups##1\noexpand\@g@r@p@{##1}\noexpand\qStop}
+ \pp@enumgroups={}
+ \let\pp@groupprefix\@empty
+ }
+
+\newcount\finalstates \finalstates10000
+
+\def\gettoken#1#2#3#4{%
+ \ifcase
+  \Name\ifx{\pp@short:act[#1]}\relax0
+   \else\ifnum#1<\finalstates1
+    \else2 \fi\fi
+   \afterfi{\gettokenX{#1}{#2}{#3}{#4}}% not-accepting state
+ \or
+   \afterfi{\gettokenX{#1}{#1}{#3#4}{}}% non-final accepting state
+ \or
+   \afterfi{\NameUse{\pp@short:act[#1]}{#3#4}}% final accepting state
+ \fi}
+
+\def\gettokenX#1#2#3#4#5{%
+  \gettokenXX#5{#1}{#2}{#3}{#4}{#5}}
+
+\def\gettokenXX#1#2#3#4#5#6{%
+  \Name\ifx{\pp@short:#2-#1->}\relax
+    \afterfi{\NameUse{\pp@short:act[#3]}{#4}#5#6}% no transition found
+  \else
+    \afterfi{\Name\gettoken{\pp@short:#2-#1->}{#3}{#4}{#5#6}}%
+                                       % going along transition
+  \fi}
+
+\def\scan#1{%
+  \gdef\ContinueScan{\gettokenX{#1}0{}{}}%
+  \ContinueScan}
+\def\StartScan{%
+  \xdef\ContinueScan{%
+    \noexpand\gettokenX
+      {\csname pp@\pp@short @startstate\endcsname}0{}{}}%
+  \ContinueScan
+  }
+
+\def\stopscan#1#2{#1}
+\def\pp@endoftext{end of text}
+
+\def\DeclareStateAction#1#2{\Name\def{\pp@short:act[#1]}##1{#2}}
+\def\DeclareState#1#2{\DeclareStateAction{#1}{#2\ContinueScan}}
+\def\DeclareTransition#1-#2->#3.{\Name\def{\pp@short:#1-#2->}{#3}}
+
+\def\KeywordDefault#1#2{%
+  \Name\def{chk \pp@short#1}##1{\Name\ifx{key\pp@short#1 ##1}\relax
+   #2\else \NameUse{key\pp@short#1 ##1}{##1}\fi}}
+
+\def\KeywordDefault{%
+  \@ifstar\pp@keyworddefaultS\pp@keyworddefault}
+
+\def\pp@keyworddefault#1#2{%
+  \Name\def{chk \pp@short#1}##1{\Name\ifx{key\pp@short#1 ##1}\relax
+   #2\else \NameUse{key\pp@short#1 ##1}{##1}\fi}}
+
+\def\pp@keyworddefaultS#1#2{%
+  \Name\def{chk \pp@short#1}##1{%
+    \lowercase{\Name\ifx{key\pp@short#1 ##1}}\relax #2\else
+    \lowercase{\NameUse{key\pp@short#1 ##1}}{##1}\fi}}
+
+\def\Keyword#1#2{%
+  \Name\def{key\pp@short#1 #2}##1}
+
+\def\DeclareKeywordState#1#2{%
+  \Name\edef{\pp@short:act[#1]}##1{\Name\noexpand{chk \pp@short#2}{##1}%
+    \noexpand\ContinueScan}}
+
+\def\pp@newscanner{%
+  \let\pp@groupprefix\@empty
+  \Name\def{\pp@short:act[0]}##1##2{{\let\protect\relax
+  \PackageWarning{pretprin}{This character is out of place: \string##2%
+    \MessageBreak}}%
+  \ContinueScan}%
+  }
+
+\def\CompileScanner#1#2{%
+  \Name\def{pp@\pp@short @startstate}{#1}%
+  \Name\mathchardef{pp@\pp@short @finalstates}#2
+  \DeclareStateAction{\number\maxdimen}{}%
+  \DeclareTransition #1-pp@end of text lexem->\number\maxdimen.%
+  }
+
+\def\@catprefix{pp@cat\pp@short!}
+\def\@catname#1{\csname\@catprefix#1\endcsname}
+
+%%% categories allocator
+
+\newcount\lastcategory \lastcategory=2
+\def\DeclareCategory#1{%
+  \bgroup \lccode`0=\lastcategory
+  \lowercase{\egroup
+    \Name\def{\@catprefix#1}{0}%
+    }
+  \advance\lastcategory1
+  }
+
+%%% list operations
+
+\def\ThisElem#1#2#3#4#5#6{#6#1#2#3#4#5}
+\def\NextElem#1#2#3#4#5{\expandafter\ThisElem#3#3}
+\def\SecondNextElem#1#2#3#4#5{\expandafter\NextElem#3#3}
+\def\ThirdNextElem#1#2#3#4#5{\expandafter\SecondNextElem#3#3}
+\def\PrevElem#1#2#3#4#5{\expandafter\ThisElem#2#2}
+\def\SecondPrevElem#1#2#3#4#5{\expandafter\PrevElem#2#2}
+\def\ThirdPrevElem#1#2#3#4#5{\expandafter\SecondPrevElem#2#2}
+\def\OneElem{\errmessage{Strange error no. 74582}}
+\let\TwoElems\NextElem
+\let\ThreeElems\SecondNextElem
+\let\FourElems\ThirdNextElem
+
+\newcount\scrapptr % points to last elem of cat/trans table
+
+\def\AppendElem#1#2{{%
+  \@tempcnta\scrapptr \global\advance\scrapptr1
+  \@tempcntb\scrapptr \advance\@tempcntb1
+  \Name\xdef{t[\number\scrapptr]}{#2}%
+  \Name\xdef{c[\number\scrapptr]}{\NameUse{\@catprefix#1}% category
+      \Name\noexpand{c[\number\@tempcnta]}% pointer to prev
+      \Name\noexpand{c[\number\@tempcntb]}% pointer to next
+      \Name\noexpand{t[\number\scrapptr]}}% pointer to translation
+  }}
+\def\AppendFinalElem{%
+  \expandafter\SetPrev
+    \csname c[1]\expandafter\expandafter\expandafter\endcsname
+    \csname c[1]\expandafter\endcsname\csname c[1]\endcsname
+  \AppendElem{end of text}{}%
+  \AppendElem{end of text}{}%
+  }
+
+%%% parser engine
+
+\newcount\redno \newcount\matno
+
+\def\pp@newparser{%
+  \DeclareCategory{end of text}%
+  \Name\let{\pp@short!p}\MoveToNext
+  \Name\let{\pp@short!p\@catname{end of text}}\EndTranslation
+  }
+
+\def\RedefineProdCheck#1{% pp@short
+\def\ProdCheck##1##2##3##4##5{%
+  \Name\ifx{#1!p##5##1}\relax
+    \afterfi{\csname#1!p##5\endcsname}%
+  \else \afterfi{\expandafter\ProdCheck##3{##5##1}##4}%
+  \fi
+  }%
+}
+
+\def\ApplyProdCheck#1#2#3#4#5{%
+  \advance\matno1
+  \ProdCheck#1#2#3#4{}#5}
+
+\def\MoveToNext#1{%
+  \expandafter\NextElem#1#1\ApplyProdCheck}
+
+\def\EndTranslation#1#2{}
+
+\def\ReduceOne#1#2#3#4#5{%
+  \advance\redno1
+  \expandafter#1#5#5{\ApplyReduceOne#2{#3}}%
+  \expandafter#4#5#5\ApplyProdCheck
+  }
+\def\ApplyReduceOne#1#2#3#4#5#6#7{%
+  \xdef#6{#2}%
+  \gdef#7{#1#4#5#6}%
+  }
+\def\Reduce#1#2#3#4#5#6{%
+  \advance\redno1
+  \expandafter#1#6#6{\ApplyReduce#2#3{#4}}%
+  \expandafter#5#6#6\ApplyProdCheck
+  }
+\def\ApplyReduce#1#2#3#4#5#6#7#8{%
+  \def\temp{#3}%
+  #1#4#5#6#7#8{\ApplyReduceX#8#2#5}%
+  }
+\def\ApplyReduceX#1#2#3#4#5#6#7#8{%
+  \global\let#8\temp
+  \gdef#1{#2#3#6#8}%
+  \expandafter\ThisElem#6#6{\SetPrev#1}%
+  }
+\def\SetPrev#1#2#3#4#5#6{%
+  \gdef#6{#2#1#4#5}}
+
+\def\Translate{%
+  \expandafter\expandafter\expandafter\ApplyProdCheck%
+    \csname c[1]\expandafter\endcsname\csname c[1]\endcsname
+  }
+
+\def\GetTranslation{%
+  \expandafter\expandafter\expandafter\GetTranslationX%
+    \csname c[1]\endcsname
+  }
+\def\GetTranslationX#1#2#3#4{%
+  \if\@catname{end of text}#1%
+  \else
+    \if#1\@catname{math}{}\ensuremath{#4}{}%
+         \else #4\fi
+    \expandafter\expandafter
+    \expandafter\GetTranslationX\expandafter#3%
+  \fi}
+
+%%% rule maker
+\def\DeclareProduction#1{%
+  \def\temp{}
+  \ProcessProduction #1,\qStop123456789\qStop123456789\qStop{}{}{}%
+  }
+
+\def\ProcessProduction #1,#2\qStop#3#4\qStop#5#6\qStop#7#8#9{%
+  \if\relax#2\relax \expandafter\@secondoftwo
+  \else \expandafter\@firstoftwo \fi
+  {\Name\ifx{\pp@short!p#7\@catname{#1}}\relax \expandafter\@secondoftwo
+   \else \expandafter\@firstoftwo \fi
+     {\edef\temp{#7\@catname{#1}}%
+      \ProcessProduction #2\qStop#4\qStop123456789\qStop{#7\@catname{#1}}{#8###3}{}%
+     }%
+     {\MakeDummyRule{#7\@catname{#1}}{#9###5}%
+      \ProcessProduction #2\qStop#4\qStop#6\qStop{#7\@catname{#1}}{#8###3}{#9###5}%
+     }}%
+  {\MakeRule{#7\@catname{#1}}{#8###3}%
+  }}
+
+\def\MakeDummyRule#1#2{%
+  \Name\edef{\pp@short!p#1}#2{\Name\noexpand{\pp@short!p\temp}}}
+\def\MakeRule#1#2#3#4#5#6#7#8{%
+  \ifx#4\OneElem
+    \Name\edef{\pp@short!p#1}#2{%\message{<#8>}%
+      \noexpand\ReduceOne\noexpand#3\@catname{#5}{#6}\noexpand#7}%
+  \else
+    \Name\edef{\pp@short!p#1}#2{%\message{<#8>}%
+      \noexpand\Reduce\noexpand#3\noexpand#4\@catname{#5}{#6}\noexpand#7}%
+  \fi
+  }
+\def\MakeRule#1#2#3#4#5{%
+  \expandafter\expandafter\expandafter
+  \MakeRuleX\csname\@catprefix#5\endcsname{#2}{#3}{#4}{#1}}
+\def\MakeRuleX#1#2#3#4#5#6#7#8{%
+  \ifx#4\OneElem
+    \Name\def{\pp@short!p#5}#2{%\message{<#8>}%
+      \ReduceOne#3#1{#6}#7}%
+  \else
+    \Name\def{\pp@short!p#5}#2{%\message{<#8>}%
+      \Reduce#3#4#1{#6}#7}%
+  \fi
+  }
+\newcommand\DeclarePretprinHook[1]{%
+  \Name\def{pp@\pp@short#1@hook}}
+
+\newif\ifpp@displayed
+
+\newcommand\InitPrettyprinter[1]{%
+  \def\pp@short{#1}%
+  \expandafter\let\expandafter\gettokenX\csname groups\pp@short\endcsname
+  \RedefineProdCheck{#1}%
+  \ifpp@displayed
+    \trivlist%\itemindent\parindent %??? 1998/03/10
+    \item\relax
+    \ifpp@numbered
+      \stepcounter{\PPCounter}%
+      \settowidth\rightmargin
+        {\quad\normalfont(\csname the\PPCounter\endcsname)}%
+      \noindent\rlap{\kern\columnwidth
+         \llap{\normalfont\normalcolor
+               (\csname the\PPCounter\endcsname)}}%
+    \fi
+  \else
+    \leavevmode
+  \fi
+  \ifpp@displayed\message{<#1}\fi
+  \scrapptr0
+  \let\protect\@unexpandable@protect
+  \finalstates\csname pp@\pp@short @finalstates\endcsname
+  \csname pp@\pp@short prescan@hook\endcsname
+  }
+
+\newcommand\PPCounter{equation}
+\newcommand\FinishPrettyprinting{%
+  \csname pp@\pp@short postscan@hook\endcsname
+  \ifpp@displayed\message{\number\scrapptr\space /}\fi
+  \AppendFinalElem
+  \redno0\matno0
+  \csname pp@\pp@short preparse@hook\endcsname
+  \Translate
+  \ifpp@displayed\message{\number\matno\space / \number\redno}\fi
+  \edef\thetranslation{%
+    \GetTranslation
+    }%
+  \csname pp@\pp@short postparse@hook\endcsname
+  \set@typeset@protect
+  \csname pp@\pp@short preoutput@hook\endcsname
+  \thetranslation
+  \csname pp@\pp@short postoutput@hook\endcsname
+  \ifpp@displayed
+    \endtrivlist\message{>}%
+  \fi
+  }
+
+\newcommand\pplabel[1]{\bgroup
+  \protected@edef\@currentlabel
+    {\csname p@\PPCounter\endcsname\csname the\PPCounter\endcsname}%
+  \label{#1}\egroup
+  }
+\DeclareOption{pascal}{
+  \AtEndOfPackage{\RequirePackage{pascal}}}
+\DeclareOption{prolog}{
+  \AtEndOfPackage{\RequirePackage{prolog}}}
+\DeclareOption{metamorf}{
+  \AtEndOfPackage{\RequirePackage{metamorf}}}
+\DeclareOption{terms}{
+  \AtEndOfPackage{\RequirePackage{terms}}}
+\DeclareOption{bwterms}{
+  \AtEndOfPackage{\RequirePackage{bwterms}}}
+\ProcessOptions
+\endinput
+%%
+%% End of file `pretprin.sty'.

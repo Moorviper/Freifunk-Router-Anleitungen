@@ -1,0 +1,284 @@
+%%
+%% This is file `metamorf.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% pretprin.dtx  (with options: `metamorf')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% You are *not* allowed to modify this file.
+%% 
+%% You are *not* allowed to distribute this file.
+%% For distribution of the original source see the terms
+%% for copying and modification in the file pretprin.dtx.
+%% 
+%% Programming languages pretty-printer package for LaTeX
+%% copyright (c) by Marcin Woli\'nski
+%%
+%%
+\NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{metamorf}
+  [1997/11/20 v0.0.1 Szpakowcz's metamorfosis grammar pretty-printer]
+\@ifpackageloaded{pretprin}{}{\RequirePackage{pretprin}}
+
+\ProvidesPrettyprinter[jedn]{reguly}{g}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareGroupByCatcode{z}{&} % zsyp !!!poprawi^^e6 pretprin.sty!!!
+\DeclareGroup{u}|A^^a1BC^^c6DE^^caFGHIJKL^^a3MN^^d1O^^d3PRS^^a6TUWXYZ^^af| % Uppercase
+\DeclareGroup{l}|abcdefghijklmnoprstuwxyz| % Lowercase
+\DeclareGroup{d}|0123456789|               % Digits
+\DeclareGroup{n}|=.()-,|                   % loNers
+\DeclareGroup{h}|#|                        % Hash
+\DeclareGroup{w}| ^^I^^M|                 % White
+\DeclareGroup{b}|\|                        % Backslash
+\CompileGroups
+
+\DeclareCategory{atom} \DeclareCategory{term} \DeclareCategory{open}
+\DeclareCategory{close} \DeclareCategory{regn} \DeclareCategory{bper}
+\DeclareCategory{eper} \DeclareCategory{minus}
+\DeclareCategory{comma} \DeclareCategory{dot} \DeclareCategory{hash}
+\DeclareCategory{functhd} \DeclareCategory{functor}
+\DeclareCategory{equals} \DeclareCategory{clause}
+\DeclareCategory{dcgrule}
+
+\DeclareTransition 1-d->2.  % number starts
+\DeclareTransition 1-u->3.  % literal name
+\DeclareTransition 1-l->4.  % variable name
+\DeclareTransition 1-b->5.  % bslash sequence
+\DeclareTransition 1-h->10. % hash
+\DeclareTransition 1-n->11. % loner
+\DeclareTransition 1-w->17. % eating white
+
+\DeclareState{2}{\AppendElem{term}{{#1}}}
+\DeclareTransition 2-d->2.  % number grows
+
+\DeclareState{3}{\AppendElem{atom}{#1}}
+\DeclareTransition 3-u->3.  % iden grows
+\DeclareTransition 3-d->3.  % iden grows
+
+\DeclareState{4}{\AppendElem{term}{{\slshape#1}}}
+\DeclareTransition 4-l->4.  % iden grows
+\DeclareTransition 4-d->4.  % iden grows
+
+\DeclareKeywordState{5}{b}
+\DeclareTransition 5-l->5.
+
+\DeclareStateAction{10}{\get@hash}
+\newcommand\get@hash[1]{%
+  \AppendElem{hash}{\#{\if f#1\slshape\else\ttfamily\fi#1}}\ContinueScan}
+
+\DeclareKeywordState{11}{m}
+
+
+\DeclareState{17}{} % just keep going...
+
+\CompileScanner{1}{10}
+
+\KeywordDefault m{\PackageError{pretprin}{Unexpected symbol `#1'}{}}
+\Keyword m({\AppendElem{open}{(}}
+\Keyword m){\AppendElem{close}{)}}
+\Keyword m-{\AppendElem{minus}{$-$}}
+\Keyword m,{\AppendElem{comma}{,}}
+\Keyword m={\AppendElem{equals}{\mm@newpar{(UNKNOWN)}\mm@quad
+    =\protect\mm@rhstrue}%
+  \xdef\@currclause{\Name\noexpand{t[\number\scrapptr]}}}
+\Keyword m.{\AppendElem{dot}{.}}
+
+\KeywordDefault b{%
+  \PackageError{pretprin}{Unexpected backslash sequence `#1'}{}}
+\Keyword b{\string\nreg}{\mm@getnreg}
+\Keyword b{\string\bperm}{\AppendElem{bper}{\bperm}}
+\Keyword b{\string\eperm}{\AppendElem{eper}{\eperm}}
+
+\bgroup
+\catcode`\<=1  \catcode`\>=2
+\catcode`\{=12 \catcode`\}=12
+\@firstofone<\egroup
+\def\mm@getnreg\fi\ContinueScan{#1}>{\fi
+  \expandafter\gdef\@currclause{\mm@newpar{(#1)}\mm@quad
+    =\protect\mm@rhstrue}%
+  \ContinueScan}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareProduction{atom,open}
+  \ThisElem\TwoElems{functhd}{\mm@idx{#2}\textbf{#2}#1}\ThisElem{38}
+
+\DeclareProduction{atom}
+  \ThisElem\OneElem{term}{#1}\SecondPrevElem{38}
+
+\DeclareProduction{functhd,minus,close}
+  \ThisElem\ThreeElems{functor}{#3#2#1}\SecondPrevElem{38}
+
+\DeclareProduction{functhd,minus,comma}
+  \ThisElem\ThreeElems{functhd}{#3#2#1\,\,}\ThisElem{38}
+
+\DeclareProduction{functhd,term,close}
+  \ThisElem\ThreeElems{functor}{#3#2\/#1}\SecondPrevElem{38}
+
+\DeclareProduction{functhd,term,comma}
+  \ThisElem\ThreeElems{functhd}{#3#2#1\,\,}\ThisElem{38}
+
+\DeclareProduction{minus,atom}
+  \NextElem\OneElem{atom}{\textmd{#1}}\NextElem{38} %  Next !!!!!!!!
+
+\DeclareProduction{open,term,close}
+  \ThisElem\ThreeElems{term}{#3\mm@dotgroup{#2\/}#1}\SecondPrevElem{38}
+
+\DeclareProduction{term,dot,term}
+  \ThisElem\ThreeElems{term}{#3\mm@dotbrk#2#1}\PrevElem{38}
+
+\DeclareProduction{term}
+  \ThisElem\OneElem{functor}{\mm@idx{#1}\textbf{#1}}\SecondPrevElem{38}
+
+\DeclareProduction{equals,bper}
+  \ThisElem\TwoElems{clause}{#2\mm@quad#1}\ThisElem{}
+
+\DeclareProduction{equals}
+  \ThisElem\OneElem{clause}{#1\mm@quad}\ThisElem{}
+
+\DeclareProduction{clause,minus,functor,minus}
+  \ThisElem\ThreeElems{clause}{#4#3#2\mm@dbrk}\ThisElem{}
+
+\DeclareProduction{clause,minus,functor}
+  \ThisElem\ThreeElems{clause}{#3#2#1\mm@fbrk}\ThisElem{}
+
+\DeclareProduction{clause,functor,minus}
+  \ThisElem\TwoElems{clause}{#3#2\mm@fbrk}\ThisElem{}
+
+\DeclareProduction{clause,hash,minus}
+  \ThisElem\TwoElems{clause}{#3#2\mm@dbrk}\ThisElem{}
+
+\DeclareProduction{clause,functor,eper}
+  \ThisElem\ThreeElems{clause}{#3#2#1\mm@fbrk}\ThisElem{}
+
+\DeclareProduction{clause,functor}
+  \ThisElem\TwoElems{clause}{#2#1\mm@obrk}\ThisElem{}
+
+\DeclareProduction{clause,hash}
+  \ThisElem\TwoElems{clause}{#2#1\mm@obrk}\ThisElem{}
+
+\DeclareProduction{clause,bper}
+  \ThisElem\TwoElems{clause}{#2\mm@fbrk#1}\ThisElem{}
+
+\DeclareProduction{clause,eper}
+  \ThisElem\TwoElems{clause}{#2#1\mm@fbrk}\ThisElem{}
+
+\DeclareProduction{dot,end of text}
+  \ThisElem\OneElem{dcgrule}{\textbf{#2}}\PrevElem{}
+
+\DeclareProduction{clause,dcgrule}
+  \ThisElem\TwoElems{dcgrule}{#2#1}\PrevElem{}
+
+\DeclarePretprinHook{prescan}{%
+  \AppendElem{clause}{}%
+  \ifpp@displayed  \else \let\mm@idx\@gobble \fi
+  \def\GetTranslationX##1##2##3##4{%
+    \if\@catname{end of text}##1%
+    \PackageWarning{pretprin}{Empty DCG rules}{}%
+    \else
+    ##4%
+    \expandafter\expandafter
+    \expandafter\GetTranslationXX\expandafter##3%
+    \fi}%
+  \def\GetTranslationXX##1##2##3##4{%
+    \if\@catname{end of text}##1%
+    \else
+    \PackageWarning{pretprin}{Parse failed for DCG rules}{}%
+    \ifpp@displayed\else\quad\fi
+    ##4%
+    \ifpp@displayed\par\hrule\else\vrule\fi
+    \expandafter\expandafter
+    \expandafter\GetTranslationXX\expandafter##3%
+    \fi}%
+  }
+
+\DeclarePretprinHook{preoutput}{%
+  \mm@font \global\mm@rhsfalse
+  \ifpp@displayed\noindent \rightskip0pt plus1fil
+  \fi
+  }
+
+\DeclarePretprinHook{postoutput}{%
+  \ifpp@displayed\else\unskip\fi}
+
+\newif\ifmm@rhs
+\bgroup\catcode`\|=12
+\@firstofone{\egroup
+\DeclareRobustCommand*\mm@idx[1]{%
+  \ifmm@rhs\index{#1|textrm}\else
+  \index{#1|textbf}\fi}
+}
+
+\def\kateg#1{\textsl{\mm@font#1}}
+\def\ustalona#1{{\mm@font#1}}
+\let\warunek\ustalona
+\def\nieterm#1{{\mm@font\bfseries#1}}
+\newcommand\bperm{\ensuremath{[\![}}
+\newcommand\eperm{\ensuremath{]\!]}}
+
+\newcommand\mm@optbreak[1]{\ifpp@displayed
+  \penalty10000\hfil\mm@quad\penalty#1\hfilneg
+  \else\space\fi}
+\newcommand\mm@dbrk{\mm@optbreak{60}}
+\newcommand\mm@obrk{\mm@optbreak8}
+\newcommand\mm@fbrk{\mm@optbreak{1}}
+\newcommand\mm@forcedbreak{\penalty10000\hfil\penalty-9999}
+\newcount\mm@dotpenalty \mm@dotpenalty=500
+\newcommand\mm@dotbrk{%
+  \penalty\mm@dotpenalty\kern-1em\null\kern1em}
+\newcommand\mm@dotgroup[1]{%
+  {\advance\mm@dotpenalty100#1}}
+
+\newcommand\mm@quad{\kern1em}
+\newcommand\mm@font{\small\sffamily}
+\newdimen\mm@indent
+\DeclareRobustCommand*\mm@newpar[1]{\par
+  \settowidth\mm@indent{\mm@font\mm@quad=\mm@quad}
+  \settowidth\@tempdimb{\,\mm@quad#1}%
+  \@tempdima\columnwidth \advance\@tempdima -\@tempdimb
+  \@tempdimb\@tempdima \advance\@tempdimb -\mm@indent
+  \advance\@tempdimb1em
+  \noindent
+  \parshape 2 0\p@ \@tempdima \mm@indent \@tempdimb
+  \mm@rulenum{#1}%
+  }
+\newcommand\mm@rulenum[1]{%
+  \rlap{\kern\columnwidth\llap{\normalfont#1}}}
+
+\relax\endinput
+
+\newcount\commapenalty \commapenalty=17
+\def\optbrk{\ifpp@displayed\hfil\penalty\commapenalty\hfilneg\fi}
+
+\def\startpar{\indent\hangindent=2\parindent}
+\def\setshortiden#1{{\rm#1}}
+\def\setiden#1{{\rm#1\/}}
+
+\relax\endinput
+
+\DeclareProduction{clause\bper\functor}
+  \ThisElem\ThreeElems{clause{#3\mm@forcedbreak#2#1}\SecondPrevElem{}
+
+\DeclareProduction{clause\eper}
+  \ThisElem\TwoElems{clause{#2#1\mm@forcedbreak}\SecondPrevElem{}
+
+\DeclareProduction{clause\clause}
+  \ThisElem\OneElem{clause{#2}\SecondPrevElem{}
+
+\DeclareProduction{clause\functor}
+  \ThisElem\TwoElems{clause{#2\mm@optbreak#1}\SecondPrevElem{}
+
+\DeclareProduction{clause\hash}
+  \ThisElem\TwoElems{clause{#2\mm@optbreak#1}\SecondPrevElem{}
+
+\endinput
+%%
+%% End of file `metamorf.sty'.

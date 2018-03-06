@@ -1,0 +1,465 @@
+%%
+%% This is file `pascal.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% pretprin.dtx  (with options: `pascal')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% You are *not* allowed to modify this file.
+%% 
+%% You are *not* allowed to distribute this file.
+%% For distribution of the original source see the terms
+%% for copying and modification in the file pretprin.dtx.
+%% 
+%% Programming languages pretty-printer package for LaTeX
+%% copyright (c) by Marcin Woli\'nski
+%%
+%%
+\NeedsTeXFormat{LaTeX2e}
+%%  Pascal language parser written in \TeX
+%%  Copyright (C) by Marcin Woli\'nski
+%%
+%%
+%% v. 1.3.2 <Apr 28, 1996> bug with (var r:ref)
+%% v. 1.3.1 <Apr 19, 1996> use of |\trivlist|, smarter handling of underline
+%% v. 1.3 <Feb 25, 1996> yet another scanner
+%% v. 1.2 <Apr 22, 1995> new scanner engine
+%% v. 1.1.01             removed unwanted (?) space after function/procedure
+%%                       (inserted by append@function/procedure after \indnt)
+%% v. 1.1 <Apr 13, 1995> new parser engine
+%% v. 1.0 <Apr 11, 1995> version frozen, next version will be
+%%                       completely rewriten
+%% v. 0.905 <Apr 9, 1995> bugs in rules 52 and 10
+%% v. 0.902 <Oct 11, 1994> speedups (?)
+%% v. 0.9 <Oct 11, 1994> pascal in comments to pascal
+%% v. 0.87 <Oct 10, 1994> underscore in names and |\FormatAs|
+%% v. 0.86 <May 31, 1994>
+%% v. 0.8 <May 21, 1994> in-text Pascal
+%% v. 0.7 <May 20, 1994> `cancel implemented
+%% v. 0.6 <May 14, 1994> loops optimized (performance speeded up tenfold)
+%% v. 0.5 <May 14, 1994> trying to avoid `save size exceeded'
+%% v. 0.3 <May 12, 1994> parser ?
+%% v. 0.1 <May 11, 1994> Work starts --- scanner
+%%                       (based on MRJP parser v. 0.6 <Feb 15, 1994>)
+%%
+%% Inconsistencies with WEAVE:
+%% - keywords only in lower case
+%% - no @ controls
+%% - no module names
+%% - no comments in braces {} (you should use (* *) instead)
+%% - a comment is always separate scrap
+%% - no numeric constants with `E' (1.234E+56)
+%% - characters that make no sense in pascal are not allowed
+%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pascal}[1996/02/24 v1.3 Pascal pretty-printer]
+\@ifpackageloaded{pretprin}{}{\RequirePackage{pretprin}}
+
+\ProvidesPrettyprinter*[pascal]{Pascal}{p}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  tables  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  scanner  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareCategory{simp} \DeclareCategory{math}
+\DeclareCategory{intro} \DeclareCategory{open}
+\DeclareCategory{beginning} \DeclareCategory{close}
+\DeclareCategory{alpha} \DeclareCategory{omega}
+\DeclareCategory{semi} \DeclareCategory{terminator}
+\DeclareCategory{stmt} \DeclareCategory{cond}
+\DeclareCategory{clause} \DeclareCategory{colon}
+\DeclareCategory{exp} \DeclareCategory{proc}
+\DeclareCategory{casehead} \DeclareCategory{recordhead}
+\DeclareCategory{varhead} \DeclareCategory{elsie}
+\DeclareCategory{casey}
+
+\DeclareGroupByCatcode{a}{a} % Alpha
+\DeclareGroup{a}|_|          % Alpha
+\DeclareGroup{d}|0123456789| % Digits
+\DeclareGroup{w}| ^^I^^M|   % White
+\DeclareGroup*{l}|[]/;,#^+-$| %$ loners
+\DeclareGroup{b}|{|          % Brace          %}
+\DeclareGroup Q|"|
+\DeclareGroup q|'|
+\CompileGroups
+
+\DeclareTransition 1-d->22. % number
+\DeclareTransition 1-a->23. % identifier
+\DeclareTransition 1-<->25.
+\DeclareTransition 1->->26.
+\DeclareTransition 1-:->26.
+\DeclareTransition 1-=->26.
+\DeclareTransition 1-(->27.
+\DeclareTransition 1-.->28.
+\DeclareTransition 1-q->36.
+\DeclareTransition 1-*->38.
+\DeclareTransition 1-)->38.
+\DeclareTransition 1-l->38. % loner
+\DeclareTransition 1-w->39. % white
+\DeclareTransition 1-b->40. % comment in braces
+
+\DeclareState{22}{\AppendElem{simp}{#1}}
+\DeclareTransition 22-d->22. % number grows
+
+\DeclareState{23}{\AppendElem{simp}{\setshortiden{#1}}}
+\DeclareTransition 23-a->24.  % iden grows
+\DeclareTransition 23-d->24.  % iden grows
+
+\DeclareKeywordState{24}{i}
+\DeclareTransition 24-a->24.  % iden grows
+\DeclareTransition 24-d->24.  % iden grows
+
+\DeclareState{25}{\AppendElem{math}<}
+\DeclareTransition 25->->38.
+\DeclareTransition 25-=->38.
+\DeclareKeywordState{26}{m}
+\DeclareTransition 26-=->38.
+\DeclareState{27}{\AppendElem{open}(}
+\DeclareTransition 27-.->38.
+\DeclareTransition 27-*->37.
+\DeclareState{28}{\AppendElem{simp}.}
+\DeclareTransition 28-.->38.
+\DeclareTransition 28-)->38.
+
+\DeclareStateAction{36}{\pas@getstring}
+\def\pas@getstring#1'{\AppendElem{simp}{\pas@formatstring{'#1'}}\ContinueScan}
+
+\DeclareStateAction{37}{\pas@comment}
+
+\DeclareKeywordState{38}{m}
+
+\DeclareState{39}{}
+
+\DeclareStateAction{40}{\pas@brcomment}
+
+\KeywordDefault m{\AppendElem{math}{#1}}
+\Keyword m*{\AppendElem{math}\ast}
+\Keyword m){\AppendElem{close})}
+\Keyword m[{\AppendElem{open}[} \Keyword m]{\AppendElem{close}]}
+\Keyword m#{\AppendElem{math}\#} \Keyword m${\AppendElem{math}\$} %$
+\Keyword m^{\AppendElem{math}{\mathord{\uparrow}}}
+\Keyword m;{\AppendElem{semi};} \Keyword m,{\AppendElem{math}{,\opt9}}
+\Keyword m:{\AppendElem{colon}:}
+\Keyword m{..}{\AppendElem{math}{\NameUse{set..}}}
+\Keyword m{.)}{\AppendElem{close}]}
+\Keyword m{:=}{\AppendElem{math}{\NameUse{set:=}}}
+\Keyword m{>=}{\AppendElem{math}{\NameUse{set>=}}}
+\Keyword m{<=}{\AppendElem{math}{\NameUse{set<=}}}
+\Keyword m{<>}{\AppendElem{math}{\NameUse{set<>}}}
+\Keyword m{(.}{\AppendElem{open}[}
+
+\gdef\pas@comment#1*){%
+  \AppendElem{terminator}{\pas@formatcomment{\ignorespaces
+      \protect\scantokens{#1}\unskip}\force}%
+  \ContinueScan
+  }
+\bgroup\lccode`\>=`\}
+\lowercase{\egroup
+\def\pas@brcomment#1>}{%
+  \AppendElem{terminator}{\pas@formatcomment{\ignorespaces
+      \protect\scantokens{#1}\unskip}\force}%
+  \ContinueScan
+  }
+
+\KeywordDefault* i{\AppendElem{simp}{\setiden{#1}}}
+\Keyword i{and}{\AppendElem{math}{\setand}}
+\Keyword i{array}{\AppendElem{alpha}{\setkeyword{#1}}}
+\Keyword i{begin}{\AppendElem{beginning}{\force\setkeyword{#1}\cancel}%
+  \AppendElem{intro}{}}
+\Keyword i{case}{\AppendElem{casey}{}%
+  \AppendElem{alpha}{\force\setkeyword{#1}}}
+\Keyword i{const}{\AppendElem{intro}{\force\backup\setkeyword{#1}}}
+\Keyword i{div}{\AppendElem{math}{\mathbin{\setkeyword{#1}}}}
+\Keyword i{do}{\AppendElem{omega}{\setkeyword{#1}}}
+\Keyword i{downto}{\AppendElem{math}{\mathrel{\setkeyword{#1}}}}
+\Keyword i{else}{\AppendElem{terminator}{}%
+  \AppendElem{elsie}{\force\backup\setkeyword{#1}}}
+\Keyword i{end}{\AppendElem{terminator}{}%
+  \AppendElem{close}{\force\setkeyword{#1}}}
+\Keyword i{file}{\AppendElem{alpha}{\setkeyword{#1}}}
+\Keyword i{for}{\AppendElem{alpha}{\force\setkeyword{#1}}}
+\Keyword i{function}{\AppendElem{proc}{\force\backup
+  \setkeyword{#1}\cancel}%
+  \AppendElem{intro}{\indnt}}
+\Keyword i{goto}{\AppendElem{intro}{\setkeyword{#1}}}
+\Keyword i{if}{\AppendElem{cond}{}%
+  \AppendElem{alpha}{\force\setkeyword{#1}}}
+\Keyword i{in}{\AppendElem{math}{\setin}}
+\Keyword i{label}{\AppendElem{intro}{\force\backup\setkeyword{#1}}}
+\Keyword i{mod}{\AppendElem{math}{\mathbin{\setkeyword{#1}}}}
+\Keyword i{nil}{\AppendElem{simp}{\setkeyword{#1}}}
+\Keyword i{not}{\AppendElem{math}{\setnot}}
+\Keyword i{of}{\AppendElem{omega}{\setkeyword{#1}}}
+\Keyword i{or}{\AppendElem{math}{\setor}}
+\Keyword i{packed}{\AppendElem{intro}{\setkeyword{#1}}}
+\Keyword i{procedure}{\AppendElem{proc}{\force\backup
+  \setkeyword{#1}\cancel}%
+  \AppendElem{intro}{\indnt}}
+\Name\let{keypi program\expandafter}\csname keypi procedure\endcsname
+\Keyword i{record}{\AppendElem{recordhead}{\setkeyword{#1}}%
+  \AppendElem{intro}{}}
+\Keyword i{repeat}{\AppendElem{beginning}{\force
+  \indnt\setkeyword{#1}\cancel}\AppendElem{intro}{}}
+\Keyword i{set}{\AppendElem{alpha}{\setkeyword{#1}}}
+\Keyword i{then}{\AppendElem{omega}{\setkeyword{#1}}}
+\Keyword i{to}{\AppendElem{math}{\mathrel{\setkeyword{#1}}}}
+\Keyword i{type}{\AppendElem{intro}{\force\backup\setkeyword{#1}}}
+\Keyword i{until}{\AppendElem{terminator}{}%
+  \AppendElem{close}{\force\backup\setkeyword{#1}}%
+  \AppendElem{clause}{}}
+\Keyword i{var}{\AppendElem{varhead}{\force\backup
+  \setkeyword{#1}\cancel}%
+  \AppendElem{intro}{}}
+\Keyword i{while}{\AppendElem{alpha}{\force\setkeyword{#1}}}
+\Keyword i{with}{\AppendElem{alpha}{\force\setkeyword{#1}}}
+\Keyword i{xclause}{\AppendElem{alpha}{\force\~}%
+  \AppendElem{omega}{\setkeyword{#1}}}
+
+\CompileScanner{1}{30}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  parser  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareProduction{alpha,math,colon}
+  \NextElem\TwoElems{math}{#2#1}\ThisElem{1}
+\DeclareProduction{alpha,math,omega}
+  \ThisElem\ThreeElems{clause}{#3{ }\ensuremath{#2} \indnt#1}\SecondPrevElem{2}
+\DeclareProduction{alpha,omega}
+  \ThisElem\TwoElems{clause}{#2{ }\indnt#1}\SecondPrevElem{3}
+\DeclareProduction{alpha,simp}
+  \NextElem\OneElem{math}{#1}\ThisElem{4}
+\DeclareProduction{beginning,close,terminator}
+  \ThisElem\ThreeElems{stmt}{#3#2#1}\SecondPrevElem{5a}
+\DeclareProduction{beginning,close,stmt}
+  \ThisElem\ThreeElems{stmt}{#3#2#1}\SecondPrevElem{5b}
+\DeclareProduction{beginning,stmt}
+  \ThisElem\TwoElems{beginning}{#2\breakspace#1}\PrevElem{6}
+\DeclareProduction{casehead,casey,clause}
+  \ThisElem\ThreeElems{casehead}{#3\outdnt#2#1}\ThisElem{7}
+\DeclareProduction{casehead,close,terminator}
+  \ThisElem\ThreeElems{stmt}{#3\cancel\outdnt#2#1}\SecondPrevElem{8}
+\DeclareProduction{casehead,stmt}
+  \ThisElem\TwoElems{casehead}{#2\force#1}\ThisElem{9}
+\DeclareProduction{casey,clause}
+  \ThisElem\TwoElems{casehead}{#2#1}\ThisElem{10}
+\DeclareProduction{clause,stmt}
+ \ThisElem\TwoElems{stmt}{#2\breakspace#1\cancel\outdnt\force}\SecondPrevElem{11}
+\DeclareProduction{cond,clause,stmt}
+  \ThisElem\ThreeElems{stmt}{#3#2\breakspace#1\cancel\outdnt\force}
+                                                   \SecondPrevElem{13}
+\DeclareProduction{cond,clause,stmt,elsie}
+  \ThisElem\FourElems{clause}{#4#3\breakspace#2#1{ }\cancel}\SecondPrevElem{12}
+\DeclareProduction{elsie}
+  \ThisElem\OneElem{intro}{#1}\ThirdPrevElem{14}
+\DeclareProduction{intro,stmt}
+  \ThisElem\TwoElems{stmt}{#2{ }\opt7\cancel#1}\SecondPrevElem{17}
+\DeclareProduction{math,close}
+  \ThisElem\OneElem{stmt}{\ensuremath{#2}}\SecondPrevElem{18}
+\DeclareProduction{math,colon}
+  \ThisElem\TwoElems{intro}{\force\backup\ensuremath{#2}#1}\ThirdPrevElem{19}
+\DeclareProduction{math,math}
+  \ThisElem\TwoElems{math}{#2#1}\PrevElem{20}
+\DeclareProduction{math,simp}
+  \ThisElem\TwoElems{math}{#2#1}\PrevElem{21}
+\DeclareProduction{math,stmt}
+  \ThisElem\TwoElems{stmt}{\ensuremath{#2}\indnt\breakspace
+                           #1\cancel\outdnt\force}
+                               \SecondPrevElem{22}
+\DeclareProduction{math,terminator}
+  \ThisElem\TwoElems{stmt}{\ensuremath{#2}#1}\SecondPrevElem{23}
+\DeclareProduction{open,casehead,close}
+  \ThisElem\ThreeElems{math}{#3\ensuremath{\cancel#2\cancel\outdnt}#1}
+  \PrevElem{26}
+\DeclareProduction{open,close}
+  \ThisElem\TwoElems{math}{#2,#1}\PrevElem{27}
+\DeclareProduction{open,math,casehead,close}
+  \ThisElem\FourElems{math}{#4#3\ensuremath{\cancel#2\cancel\outdnt}#1}
+  \PrevElem{28}
+\DeclareProduction{open,math,close}
+  \ThisElem\ThreeElems{math}{#3#2#1}\PrevElem{29}
+\DeclareProduction{open,math,colon}
+  \NextElem\TwoElems{math}{#2#1}\ThisElem{30}
+\DeclareProduction{open,math,proc,intro}
+  \NextElem\ThreeElems{math}{#3\mathop{\cancel#2\relax}}\ThisElem{31}
+\DeclareProduction{open,math,semi}
+  \NextElem\TwoElems{math}{#2#1\,\opt5}\ThisElem{32}
+\DeclareProduction{open,math,varhead,intro}
+  \NextElem\ThreeElems{math}{#3\mathop{\cancel#2\relax}}\ThisElem{33}
+\DeclareProduction{open,proc,intro}
+  \NextElem\TwoElems{math}{\mathop{\cancel#2\relax}}\ThisElem{34}
+\DeclareProduction{open,simp}
+  \NextElem\OneElem{math}{#1}\ThisElem{35}
+\DeclareProduction{open,stmt,close}
+  \ThisElem\ThreeElems{math}{#3\ensuremath{\cancel#2\cancel}#1}
+  \PrevElem{36}
+\DeclareProduction{open,varhead,intro}
+  \NextElem\TwoElems{math}{\mathop{\cancel#2\relax}}\ThisElem{37}
+\DeclareProduction{proc,beginning,close,terminator}
+  \ThisElem\FourElems{stmt}{#4\cancel\outdnt#3#2#1}\SecondPrevElem{38}
+\DeclareProduction{proc,stmt}
+  \ThisElem\TwoElems{proc}{#2\breakspace#1}\SecondPrevElem{39}
+\DeclareProduction{recordhead}
+  \ThisElem\OneElem{casehead}{\indnt#1\cancel}\ThisElem{41}
+\DeclareProduction{recordhead,intro,casey}
+  \ThisElem\ThreeElems{casey}{#3#2 \cancel#1}\SecondPrevElem{40}
+\DeclareProduction{semi}
+  \ThisElem\OneElem{terminator}{#1}\ThirdPrevElem{42}
+\DeclareProduction{simp,close}
+  \ThisElem\OneElem{stmt}{#2}\SecondPrevElem{43}
+\DeclareProduction{simp,colon}
+  \ThisElem\TwoElems{intro}{\force\backup#2#1}\ThirdPrevElem{44}
+\DeclareProduction{simp,math}
+  \ThisElem\TwoElems{math}{#2#1}\PrevElem{45}
+\DeclareProduction{simp,simp}
+  \ThisElem\TwoElems{simp}{#2#1}\SecondPrevElem{47}
+\DeclareProduction{simp,terminator}
+  \ThisElem\TwoElems{stmt}{#2#1}\SecondPrevElem{48}
+\DeclareProduction{stmt,stmt}
+  \ThisElem\TwoElems{stmt}{#2\breakspace#1}\SecondPrevElem{49}
+\DeclareProduction{terminator}
+  \ThisElem\OneElem{stmt}{#1}\SecondPrevElem{50}
+\DeclareProduction{varhead,beginning}
+  \ThisElem\OneElem{stmt}{#2}\SecondPrevElem{51}
+\DeclareProduction{varhead,math,colon}
+  \NextElem\TwoElems{intro}{\ensuremath{#2}#1}\NextElem{52}
+\DeclareProduction{varhead,simp,colon}
+  \NextElem\TwoElems{intro}{#2#1}\NextElem{53}
+\DeclareProduction{varhead,stmt}
+  \ThisElem\TwoElems{varhead}{#2\breakspace#1}\SecondPrevElem{54}
+
+
+\DeclarePretprinHook{prescan}{%
+  \dontexpandoutput
+  }
+
+\DeclarePretprinHook{postscan}{\AppendElem{terminator}{}}
+
+\DeclarePretprinHook{postparse}{%
+  \edef\thetranslation{%
+    \noexpand\gobbleforce\thetranslation\cancel\noexpand\@empty}%
+  }
+
+\DeclarePretprinHook{preoutput}{%
+  \outputexpandable
+  \ifpp@displayed\P\else\IP\fi
+  }
+
+\def\gobbleforce#1{\ifx#1\force\else\expandafter#1\fi}
+
+\def\PascalFormatAs#1#2{%
+  \Name\let{keypi #1\expandafter}\csname keypi #2\endcsname
+  }
+
+%%%%%%%%%%%%%%%%%%%%%% "code generating" routines %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newbox\bak \setbox\bak=\hbox to -1em{} % backspace one em
+\newbox\bakk\setbox\bakk=\hbox to -2em{} % backspace two ems
+
+\newcount\ind % current indentation in ems
+\def\pasindnt{\ifpp@displayed\global\advance\ind by1\hangindent\ind em\fi} % indent one more notch
+\def\pasoutdnt{\ifpp@displayed\global\advance\ind by-1\fi} % indent one less notch
+\def\pasopt#1{\ifpp@displayed\hfil\penalty#10\hfilneg\fi} % optional break within a statement
+\def\pasbackup{\ifpp@displayed\copy\bak\fi} % backspace one notch
+\def\pasbreakspace{\ifpp@displayed\hfil\penalty-1\hfilneg
+  \kern2.5em\copy\bakk\ignorespaces
+  \else\ \fi}% optional break
+\def\pasforce{\ifpp@displayed\ifmmode\else\par % forced break
+  \hangindent\ind em\noindent\kern\ind em\copy\bakk\ignorespaces\fi
+  \else\ \fi}
+\def\pasbigforce{\Y\pasforce} % forced break and a little extra space
+
+\def\yskip{\vskip\smallskipamount}
+\def\pas@formatcomment#1{\pasbreakspace\null\quad\hbox{$\{\,$}{\rm #1}\hbox{$\,\}$}}
+\def\SHC#1{\pasbreakspace\null\quad\hbox{$//\,$}{\rm #1}}
+
+\def\P{\rightskip=\rightmargin plus 100pt minus 10pt % go into Pascal mode
+  \sfcode`;=3000
+  \pretolerance 10000
+  \hyphenpenalty 10000 \exhyphenpenalty 10000
+  \global\ind=2 \pasindnt\noindent\kern\ind em\copy\bakk\ignorespaces}
+\def\IP{\sfcode`;=3000
+  \hyphenpenalty 10000 \exhyphenpenalty10000
+  \ignorespaces}
+\def\Y{\ifpp@displayed\endgraf\yskip\fi}
+
+\def\dontexpandoutput{\Name\let{set<>}0%
+\Name\let{set>=}0\Name\let{set<=}0\Name\let{set:=}0%
+\Name\let{set..}0%
+\let\setand0\let\setor0\let\setnot0%
+\let\breakspace0\let\force0\let\bigforce0\let\opt0%
+\let\cancel0\let\bigcancel0\let\backup0\let\indnt0\let\outdnt0%
+\let\setkeyword0\let\setiden0\let\setshortiden0\let\pas@formatstring0%
+\def\protect{\noexpand\protect\noexpand}%
+}
+\def\outputexpandable{%
+ \Name\let{set<>}\ne  \Name\let{set>=}\ge
+ \Name\let{set<=}\le  \Name\def{set:=}{:=}%
+ \Name\def{set..}{\mathrel{.\,.}}%
+ \let\setand\land
+ \let\setor\lor
+ \let\setnot\lnot
+ \let\indnt\pasindnt% { indent }
+ \let\outdnt\pasoutdnt% { outdent }
+ \let\opt\pasopt% { opt }
+ \let\backup\pasbackup% { backup }
+ \def\breakspace##1{\ifx##1\cancel\let\next\cancel
+   \else\ifx##1\bigcancel\let\next\bigcancel
+        \else\ifx##1\breakspace\let\next\breakspace
+        \else\ifx##1\force\let\next\force
+        \else\ifx##1\bigforce\let\next\bigforce
+        \else\pasbreakspace\let\next##1%
+        \fi\fi\fi\fi\fi
+   \next}%
+ \def\force##1{\ifx##1\cancel\let\next\cancel
+   \else\ifx##1\bigcancel\let\next\bigcancel
+        \else\ifx##1\breakspace\let\next\force
+        \else\ifx##1\force\let\next\force
+        \else\ifx##1\bigforce\let\next\bigforce
+        \else\pasforce\let\next##1%
+        \fi\fi\fi\fi\fi
+   \next}%
+ \def\bigforce##1{\ifx##1\cancel\let\next\cancel
+   \else\ifx##1\bigcancel\let\next\bigcancel
+        \else\ifx##1\breakspace\let\next\bigforce
+        \else\ifx##1\force\let\next\bigforce
+        \else\ifx##1\bigforce\let\next\bigforce
+        \else\pasbigforce\let\next##1%
+        \fi\fi\fi\fi\fi
+   \next}%
+  \def\cancel##1{\if0\ifx##1\backup0\else\ifx##1\breakspace0\else
+   \ifx##1\force0\else\ifx##1\bigforce0\else1\fi\fi\fi\fi
+        \expandafter\cancel
+        \else\expandafter##1\fi}%
+ \def\bigcancel{\bigcancel}%
+ \let\setiden\pp@setidentifier
+ \def\setshortiden##1{\hbox{$##1$}}% one-letter identifiers
+ \let\setkeyword\pp@setkeyword
+ \def\pas@formatstring##1{\hbox{\tt##1}}%
+ \let\protect\relax
+}
+
+\bgroup \@makeother\_
+
+  \gdef\pp@setidentifier#1{%
+    \hbox{\it\convund#1_\qStop\/\kern.05em}}% italic type for identifiers
+  \gdef\pp@setkeyword#1{%
+    \hbox{\bf\convund#1_\qStop\/}}% boldface type for reserved words
+  \gdef\pp@sanitizeunderline#1{\convund#1_\qStop}
+  \gdef\convund#1_#2\qStop{%
+    #1\ifx\qStop#2\qStop\else \_\convund#2\qStop\fi}
+\egroup
+\def\qStop{\qStop}
+
+\endinput
+%%
+%% End of file `pascal.sty'.
