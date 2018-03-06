@@ -269,10 +269,10 @@ clear;
   # echo " building $routers second run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
   # echo "=============================================";
-  if [ -e "$pdffile" ]
-    then
-    mv $pdffile ./pdfbuild/$pdffile ;
-  fi
+  # if [ -e "$pdffile" ]
+  #   then
+  #   mv $pdffile ./pdfbuild/$pdffile ;
+  # fi
 
   # cleanup
   rm $texfile ;
@@ -289,7 +289,7 @@ echo " compressing pdf files:"
 echo " tar cfvj anleitungen.tar.bz2 ./pdfbuild/"
 echo ""
 echo "=============================================";
-tar cfvj anleitungen.tar.bz2 ./pdfbuild/
+tar cfvj anleitungen.tar.bz2 *.pdf
 
 # rm *.log 1>/dev/null 2>&1 ;
 # rm -R _minted* 1>/dev/null 2>&1 ;
