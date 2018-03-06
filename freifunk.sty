@@ -1,10 +1,10 @@
-\usepackage[utf8]{inputenc} 															%     Umlaute direkt Eingeben Ä ä Ö ö Ü ü und @ ermöglichen
+%\usepackage[utf8]{inputenc}                               %     Umlaute direkt Eingeben Ä ä Ö ö Ü ü und @ ermöglichen
 
-\usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\newcommand{\changefont}[3]{
-\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
-\usepackage{amsmath}
+%\usepackage{lmodern}
+%\usepackage[T1]{fontenc}
+%\newcommand{\changefont}[3]{
+%\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+% \usepackage{amsmath} <------------------------------------------------math
 \usepackage{hyperref}
 \usepackage{array}
 \usepackage{multicol}
@@ -21,18 +21,18 @@
 
 \usepackage{tikz}
 \usepackage{verbatim}
-\usepackage{PTSansNarrow}
+%\usepackage{PTSansNarrow}
 
 %--------------------------------------------------
-\setlength{\parindent}{0pt}  															% Einrücken der ersten Zeile
-\setlength{\parskip}{0pt}    															% Abstand zwischen den Absätzen
-\usepackage{eso-pic}																	% ----------------- USED TO INCLUDE PDF Background as example
-\usepackage{graphicx}  																	% ----------------- USED TO INCLUDE PDF Background as example
-\newcommand\BackgroundPic{																%====================================================================================
+\setlength{\parindent}{0pt}                               % Einrücken der ersten Zeile
+\setlength{\parskip}{0pt}                                 % Abstand zwischen den Absätzen
+\usepackage{eso-pic}                                  % ----------------- USED TO INCLUDE PDF Background as example
+\usepackage{graphicx}                                   % ----------------- USED TO INCLUDE PDF Background as example
+\newcommand\BackgroundPic{                                %====================================================================================
 \put(-3,0){
 \parbox[b][\paperheight]{\paperwidth}{%
 \vfill
-\centering																						% Hintergrund auf Vollbind und includieren
+\centering                                            % Hintergrund auf Vollbind und includieren
 \includegraphics[width=\paperwidth,height=\paperheight]{./Bilder/bgMitschift.pdf}%
 \vfill
 }}}
@@ -44,15 +44,14 @@
 \definecolor{darkblue}{rgb}{0,0,0.5}
 \usepackage{soul}
 
-																								%==============================================================================
 % =======  SCHRIFTEN ========================
 \oddsidemargin-10mm
 \usepackage{empheq}
-\usepackage[ngerman]{babel} 																	% deutsche Babel
-\usepackage{pxfonts,txfonts,upgreek,} 															% einige mathe symbole plus schöne schrift
+%\usepackage[ngerman]{babel}                                   % deutsche Babel
+% \usepackage{pxfonts,txfonts,upgreek,}                 <------------------------------------------------math              % einige mathe symbole plus schöne schrift
 \usepackage{amssymb}
 \usepackage{MnSymbol}
-\usepackage{amsmath}
+% \usepackage{amsmath}<------------------------------------------------math
 \renewcommand*{\familydefault}{\sfdefault}
 
 \usepackage[all]{tcolorbox}
@@ -111,14 +110,14 @@
 
 
 \newcommand{\infobox}[2]{
-  
+
 \begingroup
  \centering
 \tcbset{width=(\linewidth), colframe=white!100!black,colback=monoorange,boxrule=0mm}
 
         \begin{tcolorbox}[height=1cm,valign=center,%skin=beamerfirst,
         arc=3px
-       % borderline south={2pt}{-2pt}{black} 
+       % borderline south={2pt}{-2pt}{black}
        % fuzzy shadow={0mm}{-1mm}{0mm}{0.1mm}%
        %         {black!50!white}
                ]
@@ -155,16 +154,16 @@
 {
 \color{monoorange}
 \medskip
-\uline{\revreturnkey $\ \ \ ${#1}:}\\ 
+\uline{\revreturnkey $\ \ \ ${#1}:}\\
 \color{white}
-{#2}\\ 
+{#2}\\
 }
 
 \newcommand{\ipencil}[2]{\medskip\color{monoorange}
-%\medskip 
-\uline{\pencilkey $\ \ \ ${#1}: } \\ 
+%\medskip
+\uline{\pencilkey $\ \ \ ${#1}: } \\
 \color{white}
-{#2} \\ 
+{#2} \\
 }
 
 % 1 Typ
@@ -192,16 +191,16 @@
 %ribbonbox,
  bottomrule=0.5mm,
  width=\paperwidth-3cm,
- boxsep=1mm, 
+ boxsep=1mm,
  enhanced=true,
  colframe = monoblack,
  drop fuzzy shadow,
- colback = black
- ]{#2}%
- 
+ colback = black,
+ title=#2]{}%
 
-     \inputminted[firstline=#5,lastline=#6, 
-     linenos=true, framesep=2mm, mathescape, numbersep=5pt,tabsize=4,formatcom=\color{white},%fontsize=\footnotesize, 
+
+     \inputminted[firstline=#5,lastline=#6,
+     linenos=false, framesep=2mm, breaklines=true, mathescape, numbersep=5pt,tabsize=4,formatcom=\color{white},%fontsize=\footnotesize,
 ]{#1}{#3}%
 
 \end{mintedbox}%
@@ -214,15 +213,15 @@
 %ribbonbox,
  bottomrule=1mm,
  width=\paperwidth-3cm,
- boxsep=1mm, 
+ boxsep=1mm,
  enhanced=true,
  colframe=black!50!white,
  drop fuzzy shadow,
  %colback = white!10
  ]{#2}%
- 
-    \inputminted[firstline=#5,lastline=#6, 
-     linenos=true, framesep=2mm, mathescape, numbersep=5pt,tabsize=2,%fontsize=\footnotesize, 
+
+    \inputminted[firstline=#5,lastline=#6,
+     linenos=true, framesep=2mm, mathescape, numbersep=5pt,tabsize=2,%fontsize=\footnotesize,
 ]{#1}{#3}%
 
 
@@ -234,15 +233,15 @@
 %ribbonbox,
  bottomrule=1mm,
  width=\textwidth-1cm,
- boxsep=1mm, 
+ boxsep=1mm,
  enhanced=false,
  colframe=black!50!white,
  %drop fuzzy shadow,
  %colback = white!10
  ]{#2}%
- 
-    \inputminted[firstline=#5,lastline=#6, 
-     linenos=true, framesep=2mm, mathescape, numbersep=5pt,tabsize=2,%fontsize=\footnotesize, 
+
+    \inputminted[firstline=#5,lastline=#6,
+     linenos=true, framesep=2mm, mathescape, numbersep=5pt,tabsize=2,%fontsize=\footnotesize,
 ]{#1}{#3}%
 
 
@@ -331,27 +330,27 @@
 
 \usepackage{minted}
 
-%\usemintedstyle{autumn} 
+%\usemintedstyle{autumn}
 
-% weitere Styles 
-\usemintedstyle{monokai} 
-%\usemintedstyle{manni} 
-%\usemintedstyle{rrt} 
-%\usemintedstyle{perldoc} 
-%\usemintedstyle{borland} 
-%\usemintedstyle{colorful} 
-%\usemintedstyle{default} 
-%\usemintedstyle{murphy} 
-%\usemintedstyle{vs} 
-%\usemintedstyle{trac} 
-%\usemintedstyle{tango} 
-%\usemintedstyle{fruity} 
-%\usemintedstyle{bw} 
-%\usemintedstyle{emacs} 
-%\usemintedstyle{vim} 
-%\usemintedstyle{pastie} 
-%\usemintedstyle{friendly} 
-%\usemintedstyle{native} 
+% weitere Styles
+\usemintedstyle{monokai}
+%\usemintedstyle{manni}
+%\usemintedstyle{rrt}
+%\usemintedstyle{perldoc}
+%\usemintedstyle{borland}
+%\usemintedstyle{colorful}
+%\usemintedstyle{default}
+%\usemintedstyle{murphy}
+%\usemintedstyle{vs}
+%\usemintedstyle{trac}
+%\usemintedstyle{tango}
+%\usemintedstyle{fruity}
+%\usemintedstyle{bw}
+%\usemintedstyle{emacs}
+%\usemintedstyle{vim}
+%\usemintedstyle{pastie}
+%\usemintedstyle{friendly}
+%\usemintedstyle{native}
 
 
 \newminted[mycsharp]{csharp}{tabsize=2,fontsize=\footnotesize}
@@ -367,7 +366,7 @@
 
 
 \newtcolorbox[auto counter,number within=section, list inside=mypyg]{mintedbox}[2][]{%
-  title={%Listing  \thetcbcounter: 
+  title={%Listing  \thetcbcounter:
   #2}, % text titelzeile
   list entry={\numberline{\thetcbcounter}#2},
   bottomrule=1mm,boxsep=1mm, %enhanced,
@@ -394,33 +393,33 @@
 
 %\usepackage{minted}
 
-%\usemintedstyle{autumn} 
+%\usemintedstyle{autumn}
 
-% weitere Styles 
+% weitere Styles
 %\usemintedstyle{monokai}   % is modified
-%\usemintedstyle{manni} 
-%\usemintedstyle{rrt} 
-%\usemintedstyle{perldoc} 
-%\usemintedstyle{borland} 
-%\usemintedstyle{colorful} 
-%\usemintedstyle{default} 
-%\usemintedstyle{murphy} 
-%\usemintedstyle{vs} 
-%\usemintedstyle{trac} 
-%\usemintedstyle{tango} 
-%\usemintedstyle{fruity} 
-%\usemintedstyle{bw} 
-%\usemintedstyle{emacs} 
-%\usemintedstyle{vim} 
-%\usemintedstyle{pastie} 
-%\usemintedstyle{friendly} 
-%\usemintedstyle{native} 
+%\usemintedstyle{manni}
+%\usemintedstyle{rrt}
+%\usemintedstyle{perldoc}
+%\usemintedstyle{borland}
+%\usemintedstyle{colorful}
+%\usemintedstyle{default}
+%\usemintedstyle{murphy}
+%\usemintedstyle{vs}
+%\usemintedstyle{trac}
+%\usemintedstyle{tango}
+%\usemintedstyle{fruity}
+%\usemintedstyle{bw}
+%\usemintedstyle{emacs}
+%\usemintedstyle{vim}
+%\usemintedstyle{pastie}
+%\usemintedstyle{friendly}
+%\usemintedstyle{native}
 
 
 \renewcommand{\theFancyVerbLine}{\sffamily\textcolor{monoorange}{\scriptsize \oldstylenums{\arabic{FancyVerbLine}}}}
 
 %\newtcolorbox[auto counter,number within=section, list inside=mypyg]{mintedbox}[2][]{%
- % title={%Quellcode  \thetcbcounter: 
+ % title={%Quellcode  \thetcbcounter:
   %#2}, % text titelzeile
 %  list entry={\numberline{\thetcbcounter}#2},
  % coltext=white, bottomrule=1mm,boxsep=1mm, enhanced,colframe=monoorange,%black!50!white,%drop fuzzy shadow,
@@ -439,8 +438,31 @@
 
 \usepackage{hyphenat}  % mbox like mit umbrüchen \nohyphens{} is command
 
-%\AddToShipoutPicture{\BackgroundPic}													% Hintergrund auf alle Seiten Anwenden
+%\AddToShipoutPicture{\BackgroundPic}                         % Hintergrund auf alle Seiten Anwenden
 
 
 
 \newcommand{\FFCommunity}{fulda.freifunk.net}
+
+\renewcommand{\textbf}[1]{%
+    \pdfliteral direct {2 Tr 0.6 w} %the second factor is the boldness
+     #1%
+    \pdfliteral direct {0 Tr 0 w}%
+}
+
+%
+% item in description with bold text
+%
+
+\newcommand{\bitem}[2]{%
+  \item[\textbf{#1}]\hfill \\
+  #2
+}
+
+%
+% Method for quick double quotes
+%
+
+\renewcommand{\quote}[1]{
+  \glqq #1\grqq{}
+}
