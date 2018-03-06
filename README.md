@@ -1,6 +1,8 @@
 # Freifunk-Router-Anleitungen
 Latex Build Enviroment for several Gluon based Firmwares
 
+[![Build Status](https://travis-ci.org/Moorviper/Freifunk-Router-Anleitungen.svg?branch=master)](https://travis-ci.org/Moorviper/Freifunk-Router-Anleitungen)
+
 === Known Issues ===
 
 Incomplete ;-)
