@@ -1,8 +1,15 @@
+% arara: lualatex: { shell: yes, action: nonstopmode, synctex: yes}
+% arara: lualatex: { shell: yes, action: nonstopmode, synctex: yes}
+\documentclass{article}
+\usepackage[ngerman]{babel}
+\usepackage[no-math]{fontspec}
 
-\documentclass[11pt, a4paper,ngerman]{article}
+\usepackage{mwe}
+\usepackage{luacode}
+\usepackage{shellesc}
 
+% include the separate files for each router
 \usepackage{switch}
-
 \usepackage{freifunk}
 \usepackage{routerhandler}
 
@@ -16,11 +23,11 @@
 \tcbuselibrary{skins} % preamble
 
 \usepackage{tikz}
-\usepackage{PTSansNarrow}
+%\usepackage{PTSansNarrow}
 \usetikzlibrary{matrix}
 
-\usepackage{pgfplots} 
-
+\usepackage{pgfplots}
+\usepackage{array}
 
 
 % Parameter
@@ -29,15 +36,16 @@
 \newcommand{\circlethickness}{6mm} % Dicke
 
 
-% Definition der Freifunk Farben
+% \changefont{pag}{m}{n}
+%
+% \pgfplotsset{compat=1.12}
+\setmainfont{UbuntuL.ttf}
+\setsansfont{UbuntuR.ttf}
+\setmonofont{UbuntuMonoR.ttf}
 
-\definecolor{FFgelb}{HTML}{FFB400}  
-\definecolor{FFmagenta}{HTML}{DC0067}
-\definecolor{FFblau}{HTML}{009EE0}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
 
-\changefont{pag}{m}{n}
-
-\pgfplotsset{compat=1.12}
+\oddsidemargin-10mm
 
 \begin{document}
 
@@ -59,7 +67,7 @@
 % \ifthenelse{\equal{\vendor}{glnet}}{\input{./latex/router/install.tex}}{}
 
 % {\ifthenelse{\equal{\vendor}{ubiquiti}}
-%   % \vendor 
+%   % \vendor
 %   \input{./latex/router/\vendor/install.tex}
 %   }{} \\
 % }
@@ -103,7 +111,3 @@
 % \vendor} \\
 % \type} \\
 % \status} \\
-
-
-
-
