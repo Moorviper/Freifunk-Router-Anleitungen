@@ -90,24 +90,16 @@ xiaomi-miwifi-mini"
 #   for quick testing
 #
 
-ROUTERSdfd="\
+ROUTERS="\
 tp-link-tl-mr3020-v1 \
 tp-link-tl-mr3040-v1 \
 tp-link-tl-mr3040-v2 \
 tp-link-tl-mr3220-v1 \
 tp-link-tl-mr3220-v2 \
 tp-link-tl-mr3420-v1 \
-tp-link-tl-mr3420-v2 \
-gl-inet-6416a-v1 \
-linksys-wrt160nl \
-netgear-wndr3700 \
-tp-link-tl-wa850re-v1 \
-tp-link-tl-wa860re-v1 \
-tp-link-tl-wdr4300-v1 \
-ubiquiti-bullet-m \
-x86-vmware.vmdk"
+tp-link-tl-mr3420-v2"
 
-ROUTERS="\
+ROUTERSsdsd="\
 tp-link-tl-wr1043n-nd-v1 \
 gl-inet-6416a-v1 \
 linksys-wrt160nl \
