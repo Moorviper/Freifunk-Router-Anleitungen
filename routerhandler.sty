@@ -2,7 +2,7 @@
 {
   \ifthenelse{\equal{\vendor}{netgear}}{Netgear}{}%
   \ifthenelse{\equal{\vendor}{tplink}}{TP-Link}{}%
-  \ifthenelse{\equal{\vendor}{ubiquiti}}{Ubiquiti Networks}{}%  
+  \ifthenelse{\equal{\vendor}{ubiquiti}}{Ubiquiti Networks}{}%
   \ifthenelse{\equal{\vendor}{linksys}}{Linksys}{}%
   \ifthenelse{\equal{\vendor}{glnet}}{GL-Net}{}%
   \ifthenelse{\equal{\vendor}{dlink}}{D-Link}{}%
@@ -33,14 +33,14 @@ Passwort:     &   #2  \\
 }
   % {\ifthenelse{\equal{\vendor}{netgear}}
     % {
-  %   % \vendor 
-    
+  %   % \vendor
+
   %   }{} \\
   % }
 
   % {\ifthenelse{\equal{\vendor}{ubiquiti}}
     % {
-  %   % \vendor 
+  %   % \vendor
   %   192.168.1.20
   %   }{} \\
   % }
@@ -50,28 +50,28 @@ Passwort:     &   #2  \\
   % {\ifthenelse{\equal{\vendor}{linksys}}
   %   {
   %     % \vendor {}
-      
+
   %   }{} \\
   % }
-
-  {\ifthenelse{\equal{\vendor}{glnet}}
-    {
-      % \vendor {}
-      
-    }{} \\
-  }
+  %
+  % {\ifthenelse{\equal{\vendor}{glnet}}
+  %   {
+  %     % \vendor {}
+  %
+  %   }{} \\
+  % }
 
   % {\ifthenelse{\equal{\vendor}{dlink}}
   %   {
   %     % \vendor {}
-      
+
   %   }{} \\
   % }
 
   % {\ifthenelse{\equal{\vendor}{buffalo}}
   %   {
   %     % \vendor {}
-      
+
   %   }{} \\
   % }
 
@@ -83,34 +83,34 @@ Passwort:     &   #2  \\
   %             192.168.0.1
   %           }{
   %             192.168.0.254
-  %           } 
+  %           }
   %     }
-  %   }{} 
+  %   }{}
   % }
 
 % }%
 
 %
-%         Makro zum ausgeben des Hersteller Namens  
+%         Makro zum ausgeben des Hersteller Namens
 %
 
 
 
 %
-%         Makro zum ausgeben des Hersteller Benutzernamens und Passwor  
+%         Makro zum ausgeben des Hersteller Benutzernamens und Passwor
 %
 \newcommand{\printStockLogin}{
 
   {\ifthenelse{\equal{\vendor}{netgear}}
     {
-    % \vendor 
+    % \vendor
       Netgear
     }{} \\
   }
 
   {\ifthenelse{\equal{\vendor}{ubiquiti}}
     {
-    % \vendor 
+    % \vendor
     (falls gesetzt) \\
     \crededials{admin}{admin}
     }{} \\
@@ -121,7 +121,7 @@ Passwort:     &   #2  \\
     {
       % \vendor {}\newcommand{\}{router}
       \crededials{admin}{admin}
-    }{} 
+    }{}
   }
 
   {\ifthenelse{\equal{\vendor}{linksys}}
@@ -156,7 +156,7 @@ Passwort:     &   #2  \\
     {
       % \vendor {}\newcommand{\}{router}
       \crededials{xiamo}{passwort}
-    }{} 
+    }{} \\
   }
 
 }%
