@@ -262,10 +262,10 @@ clear;
   # echo " building $routers second run ...";
   # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
   echo "=============================================";
-  echo " building $routers first run ...";
+  echo " building $routers ...";
   latexdockercmd.sh arara $texfile - v 1>/dev/null 2>&1 ;
-  latexdockercmd.sh arara $texfile - v 1>/dev/null 2>&1 ;
-  echo " building $routers second run ...";
+  #latexdockercmd.sh arara $texfile - v 1>/dev/null 2>&1 ;
+  #echo " building $routers second run ...";
   #pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
   echo "=============================================";
   # echo " building $routers first run ...";
@@ -275,7 +275,7 @@ clear;
   # echo "=============================================";
   if [ -e "$pdffile" ]
     then
-    mv $pdffile ./pdfbuild ;
+    mv $pdffile ./pdfbuild/$pdffile ;
   fi
 
   # cleanup
@@ -287,7 +287,8 @@ clear;
   # echo "";
 done;
 
-zip ./pdfbuild/* anleitungen.zip
+zip -r anleitungen.zip ./pdfbuild/
+
 rm *.log 1>/dev/null 2>&1 ;
 rm -R _minted* 1>/dev/null 2>&1 ;
 rm *.out 1>/dev/null 2>&1 ;
