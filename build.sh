@@ -287,7 +287,7 @@ clear;
   # echo "";
 done;
 
-zip -r anleitungen.zip ./pdfbuild/
+tar cfvj anleitungen.tar.bz2 ./pdfbuild/
 
 rm *.log 1>/dev/null 2>&1 ;
 rm -R _minted* 1>/dev/null 2>&1 ;
