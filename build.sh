@@ -99,41 +99,18 @@ tp-link-tl-mr3220-v2 \
 tp-link-tl-mr3420-v1 \
 tp-link-tl-mr3420-v2"
 
-ROUTERSsdsd="\
-tp-link-tl-wr1043n-nd-v1 \
-gl-inet-6416a-v1 \
-linksys-wrt160nl \
-netgear-wndr3700 \
-tp-link-tl-wa850re-v1"
-
-ROUTERSsd="\
-xiaomi-miwifi-mini"
-
-ROUTERSds="\
-gl-inet-6416a-v1"
-
-#
-#   Remove the pdfbuild folder before rebuild them
-#
-#   add's a gitignore file to it.
-#
-
-# rm -R pdfbuild;
-mkdir pdfbuild;
-
-# cp gitignorePdfFolder pdfbuild/.gitignore;
-
 #
 # count the amount of routers for display progress at the pdf-building
 #
 
-# soll=0
-# ist=0
+should=0
+is=0
 
-# for routers in `echo $ROUTERS`
-# do
-#   soll=`expr $soll + 1`
-# done
+for routers in `echo $ROUTERS`
+do
+  should=`expr $should + 1`
+done
+
 echo "==============================================";
 echo " Building pdf files for the different routers"
 echo "==============================================";
@@ -240,70 +217,17 @@ clear;
     then
     cp $routerswitch switch.sty ;
   fi
-
-
-  # build
-  # pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile  ;
-  # pdflatex  -latexoption="--shell-escape -interaction=nonstopmode  -synctex=1" $texfile  ;
-
-  # echo "";
-  # echo " PDFLaTeX"
-   # ist=`expr $ist + 1`
-  # echo $ist;
-  # proz=$(bc -l <<< 'scale=2; '$soll'/'$ist'')
-  # let progress=100/$proz
-  # echo " zu "$(bc -l <<< 'scale=2; 100/'$proz'') "% fertig";
-  # echo "=============================================";
-  # echo " building $routers first run ...";
-  # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
-  # echo " building $routers second run ...";
-  # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile ;
-  #echo "=============================================";
-  #echo "$routers";
-  echo "$texfile";
-  sh latexdockercmd.sh arara $texfile
-  sh latexdockercmd.sh arara $texfile
-  #1>/dev/null 2>&1 ;
-  #latexdockercmd.sh arara $texfile - v 1>/dev/null 2>&1 ;
-  #echo " building $routers second run ...";
-  #pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
-  #echo "=============================================";
-  # echo " building $routers first run ...";
-  # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
-  # echo " building $routers second run ...";
-  # /Library/TeX/texbin/pdflatex -shell-escape -interaction=nonstopmode -synctex=1 $texfile 1>/dev/null 2>&1 ;
-  # echo "=============================================";
-  # if [ -e "$pdffile" ]
-  #   then
-  #   mv $pdffile ./pdfbuild/$pdffile ;
-  # fi
+   is=`expr $is + 1`
+  echo $is;
+  proz=$(bc -l <<< 'scale=2; '$should'/'$is'')
+  let progress=100/$proz
+  echo "> "$(bc -l <<< 'scale=2; 100/'$proz'') "% done";
+    #echo "$texfile";
+    echo " $routers ";
+    sh latexdockercmd.sh arara $texfile
+    sh latexdockercmd.sh arara $texfile
 
   # cleanup
   rm $texfile ;
-  # rm $routerfile;
-  # mkdir $routers ;
-  # echo "";
-  # echo "";
-  # echo "";
+
 done;
-rm Anleitung.pdf;
-rm back.pdf;
-rm dummy.pdf;
-rm front.pdf;
-rm xiaomi-miwifi-mini-demo.pdf;
-rm tp-link-cpe210-v1.0-marburg-test.pdf;
-
-echo "=============================================";
-echo ""
-echo " compressing pdf files:"
-echo " tar cfvj anleitungen.tar.bz2 *.pdf"
-echo ""
-echo "=============================================";
-tar cfvj anleitungen.tar.bz2 *.pdf
-
-# rm *.log 1>/dev/null 2>&1 ;
-# rm -R _minted* 1>/dev/null 2>&1 ;
-# rm *.out 1>/dev/null 2>&1 ;
-# rm *.aux 1>/dev/null 2>&1 ;
-# rm *.synctex.gz 1>/dev/null 2>&1 ;
-# rm *.pyg 1>/dev/null 2>&1 ;

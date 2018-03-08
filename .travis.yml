@@ -7,6 +7,7 @@ before_install:
 install:
 script:
   - bash build.sh
+  - bash deploy.sh
 deploy:
   provider: releases
   api_key:
