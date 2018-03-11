@@ -220,7 +220,7 @@ clear;
    is=`expr $is + 1`
   echo $is;
   proz=$(bc -l <<< 'scale=2; '$should'/'$is'')
-  let progress=100/$proz
+  #let progress=100/$proz
   echo "> "$(bc -l <<< 'scale=2; 100/'$proz'') "% done";
     #echo "$texfile";
     echo " $routers ";
