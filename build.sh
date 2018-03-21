@@ -34,6 +34,7 @@ tp-link-tl-wa701n-nd-v2 \
 tp-link-tl-wa750re-v1 \
 tp-link-tl-wa801n-nd-v1 \
 tp-link-tl-wa801n-nd-v2 \
+tp-link-tl-wa801n-nd-v3 \
 tp-link-tl-wa830re-v1 \
 tp-link-tl-wa830re-v2 \
 tp-link-tl-wa850re-v1 \
