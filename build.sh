@@ -22,6 +22,8 @@ tp-link-cpe210-v1.0 \
 tp-link-cpe220-v1.0 \
 tp-link-cpe510-v1.0 \
 tp-link-cpe520-v1.0 \
+tp-link-cpe210-eu \
+tp-link-cpe510-eu \
 tp-link-tl-mr3020-v1 \
 tp-link-tl-mr3040-v1 \
 tp-link-tl-mr3040-v2 \
@@ -187,19 +189,19 @@ clear;
   cat Anleitung.tex >> $texfile;
   if [ -e "specs.tex" ]
     then
-    rm specs.tex ;
+    rm -f specs.tex ;
   fi
   if [ -e "front.pdf" ]
     then
-    rm front.pdf ;
+    rm -f front.pdf ;
   fi
   if [ -e "back.pdf" ]
     then
-    rm back.pdf;
+    rm -f back.pdf;
   fi
-  if [ -e "specs.tex" ]
+  if [ -e "switch.sty" ]
     then
-    rm switch.sty ;
+    rm -f switch.sty ;
   fi
 
   if [ -e $specsPath ]
