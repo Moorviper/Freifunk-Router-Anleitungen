@@ -1,4 +1,4 @@
-\columnseprule2pt 
+\columnseprule2pt
 \columnsep7mm
 \def\columnseprulecolor{\color{FFmagenta}}
 
@@ -12,11 +12,12 @@
 % \begin{tabular}{|p{0.33\textwidth}|>{\columncolor{FFmagenta}[0pt]}p{0.6\textwidth}|}
 \begin{tabular}{|m{0.33\textwidth}|m{0.6\textwidth}|}
 \hline
-\includegraphics[%height=5cm, 
-	width=0.33\textwidth]{./back.pdf} 
+\IfFileExists{./back.pdf}{\includegraphics[width=0.33\textwidth]{./back.pdf}\\}{\includegraphics[width=0.33\textwidth]{./dummy.pdf}\\}
+% \includegraphics[%height=5cm, 
+% 	width=0.33\textwidth]{./back.pdf}
   %
   &
-  % 
+  %
 	\begin{minipage}{0.6\textwidth}
 	Um die heruntergeladene Firmware installieren zu können, musst du deinen WLAN-Router mit deinem PC verbinden. \newline
   Schließe dazu als erstes den WLAN-Router mit dem Netzwerkkabel an eine Steckdose an. \newline
@@ -28,10 +29,10 @@
 \\
  % &  & \multicolumn{2}{l|}{} \\ \hline
  \hline
- % \includegraphics[%height=5cm, 
-	% width=0.33\textwidth]{./back.pdf} & 
+ % \includegraphics[%height=5cm,
+	% width=0.33\textwidth]{./back.pdf} &
   %
-  
+
 	&
   %
 	\begin{minipage}{0.6\textwidth}%
@@ -39,7 +40,7 @@
   Verbinde den WLAN-Router anschließend mit Hilfe eines weiteren LAN-Kabels mit Deinem Computer. \newline
   Stecke dafür das Kabel in eine der gelben Buchsen (die blaue brauchst du später). \newline \newline
 
-  Nach dem Einschalten braucht der WLAN-Router ungefähr 30 - 60 Sekunden, bevor er bereit ist. 
+  Nach dem Einschalten braucht der WLAN-Router ungefähr 30 - 60 Sekunden, bevor er bereit ist.
 % \vspace{-1cm}
 \end{minipage}
 
@@ -57,7 +58,7 @@
 
 {\Large 3. Firmware einspielen} \\
 
-Jetzt kannst du den Router einfach über den Webbrowser (z.B. Firefox) konfigurieren.\\ 
+Jetzt kannst du den Router einfach über den Webbrowser (z.B. Firefox) konfigurieren.\\
 Dazu rufst du in die folgende Adresse auf: \\
 
 % 2 Parameter 1. Die IP 2. die Farbe (für Freifunk: FFmagenta FFgelb FFblau)
@@ -119,4 +120,3 @@ Bei den Geräten von \printVendor\ gelten folgende Zugangsdaten:
 
 
 % Als nächstes musst du deinen Router noch einrichten und im Freifunk Netz anmelden. Auch das ist ganz einfach. Eine detaillierte Beschreibung findest du in der Anleitung "Freifunk-Fulda Knoten konfigurieren".
-
