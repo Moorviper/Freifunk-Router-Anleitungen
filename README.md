@@ -14,7 +14,20 @@ Todo
 * complete vector pictures for all router
 ...
 
+# How to use the pictures with Meshviewer/hopglass
 
+To get the required filename for the picture copy the Hardwarename which is shown on Meshviewer/hopglass.
+
+as an example:
+`VMware, Inc. VMware Virtual Platform`
+
+paste it @ [https://meshdata.shivering-isles.com](https://meshdata.shivering-isles.com) which is thankfully provided by [https://github.com/SISheogorath](https://github.com/SISheogorath)
+
+you will get:
+`90025292 ` in this case.
+then copy and rename the svg to 90025292.svg
+
+A ready to use repo is [https://github.com/Moorviper/meshviewer_hwpics](https://github.com/Moorviper/meshviewer_hwpics)
 
 
 # How to build with travis-CI
