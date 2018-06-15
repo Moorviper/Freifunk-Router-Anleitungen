@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1280 1150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g id="Unifi-ap-mesh" serif:id="Unifi ap mesh">
+        <g id="Antenne-Links" serif:id="Antenne Links">
+            <g id="_-Rechteck-" serif:id="(Rechteck)" transform="matrix(1.01587,0,0,1,-9.7619,0)">
+                <rect x="583.5" y="424.5" width="31.5" height="8.5" style="fill:rgb(184,187,192);stroke:black;stroke-width:0.99px;"/>
+            </g>
+            <path d="M581,366L616,366C619.05,364.726 622,360.999 622,357L622,45.5C622,38.879 614.865,31 608,31L589,31C581.54,31 575,38.803 575,45.5L575,357C575,360.896 577.638,364.887 581,366Z" style="fill:rgb(236,237,239);stroke:black;stroke-width:1px;"/>
+            <g>
+                <path d="M578.5,427L618,427L618,366L614,359L614,317C614,309.906 607.73,303.543 597.75,303.5C586.891,303.453 581.5,309.886 581.5,317L581.5,359L578.5,366L578.5,427Z" style="fill:rgb(238,238,240);stroke:black;stroke-width:1px;"/>
+                <path d="M578.5,373L618,373" style="fill:none;stroke:black;stroke-width:1px;"/>
+            </g>
+        </g>
+        <g id="Antenne-Rechts" serif:id="Antenne Rechts">
+            <g transform="matrix(1.01587,0,0,1,86.2381,0)">
+                <rect x="583.5" y="424.5" width="31.5" height="8.5" style="fill:rgb(184,187,192);stroke:black;stroke-width:0.99px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,96.4527,0)">
+                <path d="M581,366L616,366C619.05,364.726 622,360.999 622,357L622,45.5C622,38.879 614.865,31 608,31L589,31C581.54,31 575,38.803 575,45.5L575,357C575,360.896 577.638,364.887 581,366Z" style="fill:rgb(236,237,239);stroke:black;stroke-width:1px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,95.6838,0)">
+                <path d="M578.5,427L618,427L618,366L614,359L614,317C614,309.906 607.73,303.543 597.75,303.5C586.891,303.453 581.5,309.886 581.5,317L581.5,359L578.5,366L578.5,427Z" style="fill:rgb(238,238,240);stroke:black;stroke-width:1px;"/>
+                <path d="M578.5,373L618,373" style="fill:none;stroke:black;stroke-width:1px;"/>
+            </g>
+        </g>
+        <g id="Body">
+            <path d="M578.5,429.5L617.5,429.5L617.5,510.5C622.068,519.917 627.432,513.507 634.5,512C642.36,510.324 650.182,510.205 658,512C665.563,513.737 670.862,519.942 675,510.5L675,429.5L715,429.5L715,1040C713.402,1083 690.751,1110.42 647.214,1110C608.126,1109.62 583.133,1088.24 578.5,1040L578.5,429.5Z" style="fill:rgb(242,243,245);stroke:black;stroke-width:1px;"/>
+            <path d="M623,1000C624.273,1002.67 625.919,1006.5 630,1006.5L663,1006.5C667.443,1006.5 668.296,1002.81 670,1000" style="fill:none;stroke:black;stroke-width:1px;"/>
+            <path d="M578.5,1000L715,1000" style="fill:none;stroke:black;stroke-width:1px;"/>
+        </g>
+    </g>
+</svg>
