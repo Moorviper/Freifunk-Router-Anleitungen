@@ -1,0 +1,1 @@
+README für Router: Techdata: AVM FRITZ!WLAN Repeater 450E
